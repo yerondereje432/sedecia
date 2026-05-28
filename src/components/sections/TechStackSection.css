@@ -1,0 +1,9 @@
+.techstack { background: var(--white); overflow: hidden; }
+.techstack__header { text-align: center; margin-bottom: 3rem; }
+.techstack__title { margin-top: 1rem; color: var(--navy); }
+.techstack__track-wrap { overflow: hidden; mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent); }
+.techstack__track { display: flex; gap: 1rem; width: max-content; animation: scrollTrack 30s linear infinite; }
+.techstack__track:hover { animation-play-state: paused; }
+.techstack__chip { display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.25rem; background: var(--off-white); border: 1px solid var(--mid-gray); border-radius: var(--radius-full); font-family: var(--font-display); font-size: 0.875rem; font-weight: 600; color: var(--navy); white-space: nowrap; transition: var(--transition-fast); }
+.techstack__chip:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-glow); }
+@keyframes scrollTrack { from { transform: translateX(0); } to { transform: translateX(-50%); } }

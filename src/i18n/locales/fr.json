@@ -1,0 +1,5 @@
+{
+  "nav": { "home": "Accueil", "about": "À Propos", "services": "Services", "solutions": "Solutions", "industries": "Industries", "portfolio": "Portfolio", "blog": "Blog", "contact": "Contact", "careers": "Carrières", "faq": "FAQ", "getStarted": "Commencer" },
+  "hero": { "badge": "Innovation Propulsée par l'IA", "headline1": "Solutions Intelligentes", "headline2": "pour un Avenir", "headline3": "Plus Intelligent", "subtext": "Nous transformons les entreprises, startups, écoles et organisations avec l'IA de pointe et l'innovation numérique.", "cta1": "Explorer nos Services", "cta2": "Voir la Démo" },
+  "footer": { "tagline": "Solutions Intelligentes", "desc": "Donner aux organisations mondiales les moyens de réussir grâce à l'IA et à la transformation numérique.", "rights": "Tous droits réservés." }
+}

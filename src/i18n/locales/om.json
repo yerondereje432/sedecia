@@ -1,0 +1,5 @@
+{
+  "nav": { "home": "Mana", "about": "Waa'ee Keenya", "services": "Tajaajila", "solutions": "Furmaata", "industries": "Industirii", "portfolio": "Hojii Keenya", "blog": "Bloogii", "contact": "Nu Quunnamaa", "careers": "Hojii Barbaacha", "faq": "Gaaffii Baay'inaan Gaafatamu", "getStarted": "Jalqabi" },
+  "hero": { "badge": "Muuxannoo AI Ammayyaa", "headline1": "Furmaata Caalaa", "headline2": "Fuunduraa", "headline3": "Caalaa", "subtext": "Daldala, dhaabbilee fi mana barumsaa tekinooloojii AI fi dijitaalaan jijjiirra.", "cta1": "Tajaajila Keenya Ilaali", "cta2": "Viidiyoo Ilaali" },
+  "footer": { "tagline": "Furmaata Caalaa", "desc": "Dhaabbilee addunyaa tekinooloojii AI fi jijjiirama dijitaalaan gargaaruu.", "rights": "Mirgi hunduu eegame." }
+}

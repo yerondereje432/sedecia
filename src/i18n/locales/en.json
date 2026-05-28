@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "solutions": "Solutions",
+    "industries": "Industries",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "careers": "Careers",
+    "faq": "FAQ",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "AI-Powered Innovation",
+    "headline1": "Smart Solutions",
+    "headline2": "for a Smarter",
+    "headline3": "Future",
+    "subtext": "We transform businesses, startups, schools, and enterprises through cutting-edge AI, automation, and digital innovation — built for the next generation.",
+    "cta1": "Explore Our Services",
+    "cta2": "Watch Demo",
+    "stats": {
+      "projects": "Projects Delivered",
+      "clients": "Happy Clients",
+      "countries": "Countries Served",
+      "uptime": "Uptime Guarantee"
+    }
+  },
+  "services": {
+    "badge": "What We Do",
+    "title": "Our Core Services",
+    "subtitle": "From AI automation to enterprise digital transformation — we deliver end-to-end technology solutions.",
+    "items": {
+      "ai": { "title": "AI Automation", "desc": "Intelligent automation that learns, adapts, and scales with your business operations." },
+      "chatbot": { "title": "AI Chatbots", "desc": "Conversational AI systems that engage customers 24/7 with human-like precision." },
+      "software": { "title": "Custom Software", "desc": "Bespoke software engineered to solve your unique business challenges." },
+      "web": { "title": "Web Development", "desc": "Premium, high-performance web platforms built for the modern digital era." },
+      "mobile": { "title": "Mobile Apps", "desc": "Native and cross-platform mobile experiences that users love." },
+      "cyber": { "title": "Cybersecurity", "desc": "Enterprise-grade protection that shields your digital assets around the clock." },
+      "ml": { "title": "Machine Learning", "desc": "Predictive models and intelligent systems that unlock the power of your data." },
+      "cloud": { "title": "Cloud Solutions", "desc": "Scalable cloud infrastructure designed for speed, reliability, and growth." },
+      "data": { "title": "Data Analytics", "desc": "Transform raw data into strategic insights that drive smarter decisions." },
+      "enterprise": { "title": "Enterprise AI", "desc": "Full-scale AI integration tailored for large organizations and complex workflows." },
+      "consulting": { "title": "IT Consulting", "desc": "Strategic technology advisory to align your IT roadmap with business goals." }
+    }
+  },
+  "about": {
+    "badge": "Who We Are",
+    "title": "Built to Power the Future",
+    "body": "SEDECIA is an AI-powered solutions company on a mission to democratize advanced technology for every business, institution, and organization — regardless of size or sector.",
+    "mission": "Our Mission",
+    "missionText": "To empower organizations worldwide with intelligent technology that drives real-world impact.",
+    "vision": "Our Vision",
+    "visionText": "A world where every business operates smarter, faster, and more efficiently through AI.",
+    "values": "Our Values",
+    "team": "Our Team"
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Let's Build Something",
+    "titleAccent": "Extraordinary",
+    "subtitle": "Ready to transform your business? Our team is here to help you take the next step.",
+    "name": "Full Name",
+    "email": "Email Address",
+    "company": "Company / Organization",
+    "service": "Service Interested In",
+    "message": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent! We'll respond within 24 hours.",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "tagline": "Smart Solutions",
+    "desc": "Empowering organizations worldwide with intelligent AI solutions and digital transformation.",
+    "company": "Company",
+    "services": "Services",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "rights": "All rights reserved.",
+    "madeWith": "Built with ❤️ by SEDECIA"
+  }
+}

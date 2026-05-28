@@ -1,0 +1,112 @@
+.cta-section {
+  background: var(--navy);
+  padding-block: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-section__grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.cta-section__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.cta-section__orb--1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(244,121,32,0.2) 0%, transparent 70%);
+  top: -20%;
+  left: -10%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.cta-section__orb--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(244,121,32,0.12) 0%, transparent 70%);
+  bottom: -15%;
+  right: -5%;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.cta-section__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cta-section__title {
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.cta-section__title-accent {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 60%, #FFB347 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-section__sub {
+  color: rgba(255,255,255,0.65);
+  max-width: 560px;
+}
+
+.cta-section__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.cta-section__trust {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.cta-section__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.cta-section__trust-icon {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.cta-section__trust-sep {
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+
+@media (max-width: 640px) {
+  .cta-section__trust-sep { display: none; }
+  .cta-section__trust { flex-direction: column; gap: 0.5rem; }
+}

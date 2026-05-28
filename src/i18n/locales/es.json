@@ -1,0 +1,5 @@
+{
+  "nav": { "home": "Inicio", "about": "Nosotros", "services": "Servicios", "solutions": "Soluciones", "industries": "Industrias", "portfolio": "Portafolio", "blog": "Blog", "contact": "Contacto", "careers": "Carreras", "faq": "Preguntas", "getStarted": "Comenzar" },
+  "hero": { "badge": "Innovación Potenciada por IA", "headline1": "Soluciones Inteligentes", "headline2": "para un Futuro", "headline3": "más Inteligente", "subtext": "Transformamos empresas, startups, escuelas y organizaciones con IA de vanguardia e innovación digital.", "cta1": "Explorar Servicios", "cta2": "Ver Demo" },
+  "footer": { "tagline": "Soluciones Inteligentes", "desc": "Empoderando organizaciones mundiales con soluciones de IA y transformación digital.", "rights": "Todos los derechos reservados." }
+}
