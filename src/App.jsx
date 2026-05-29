@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import { Analytics } from '@vercel/analytics/react';
 import '@/i18n';
 import '@/styles/globals.css';
 
@@ -66,6 +67,7 @@ export default function App() {
             </Routes>
           </Layout>
         </Suspense>
+        <Analytics />
       </Router>
     </HelmetProvider>
   );
