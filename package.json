@@ -26,7 +26,8 @@
     "react-countup": "^6.5.0",
     "swiper": "^11.0.0",
     "lenis": "^1.0.45",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "@vercel/analytics": "^2.0.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
