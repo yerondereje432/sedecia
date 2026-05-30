@@ -20,9 +20,15 @@ export default function Services() {
   return (
     <>
       <Helmet>
-        <title>Services — SEDECIA | AI & Digital Transformation Solutions</title>
-        <meta name="description" content="Explore SEDECIA' full range of AI services: automation, chatbots, software development, cybersecurity, and more." />
-      </Helmet>
+  <title>AI & Tech Services — SEDECIA | Automation, Software, Web & More</title>
+  <meta name="description" content="SEDECIA offers AI automation, chatbots, custom software, web development, mobile apps, cybersecurity, data analytics, and enterprise AI solutions in Ethiopia." />
+  <meta name="keywords" content="AI services Ethiopia, software development Ethiopia, web development Ethiopia, AI automation, chatbot development, SEDECIA services" />
+  <meta property="og:title" content="AI & Tech Services — SEDECIA" />
+  <meta property="og:description" content="End-to-end AI and technology services: automation, chatbots, custom software, web, mobile, cybersecurity and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sedecia.com/services" />
+  <link rel="canonical" href="https://sedecia.com/services" />
+</Helmet>
 
       <section className="page-hero" style={{ paddingTop:'calc(var(--section-padding) + 80px)', background:'var(--white)', textAlign:'center', paddingBottom:'var(--section-padding)' }}>
         <div className="page-hero__orb" style={{ position:'absolute', width:'600px', height:'600px', background:'radial-gradient(circle, rgba(244,121,32,0.08) 0%, transparent 70%)', top:'-20%', left:'50%', transform:'translateX(-50%)', borderRadius:'50%', filter:'blur(40px)', pointerEvents:'none' }} aria-hidden="true" />

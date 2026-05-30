@@ -7,9 +7,15 @@ export default function Blog() {
   return (
     <>
       <Helmet>
-        <title>Blog — SEDECIA</title>
-        <meta name="description" content="SEDECIA Blog page." />
-      </Helmet>
+  <title>Blog — SEDECIA | AI, Tech & Innovation Insights</title>
+  <meta name="description" content="Read SEDECIA's blog for insights on artificial intelligence, software development, digital transformation, and tech innovation in Ethiopia and Africa." />
+  <meta name="keywords" content="AI blog Ethiopia, tech blog Africa, SEDECIA blog, artificial intelligence insights, software development tips" />
+  <meta property="og:title" content="Blog — SEDECIA | AI & Tech Insights" />
+  <meta property="og:description" content="Insights on AI, software, and digital innovation from SEDECIA Technologies." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sedecia.com/blog" />
+  <link rel="canonical" href="https://sedecia.com/blog" />
+</Helmet>
       <section style={{ paddingTop:'calc(var(--section-padding) + 80px)', background:'var(--white)', textAlign:'center', paddingBottom:'var(--section-padding)', minHeight:'60vh' }}>
         <div className="container">
           <motion.div initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}>

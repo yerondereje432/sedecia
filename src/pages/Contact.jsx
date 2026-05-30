@@ -44,9 +44,15 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact Us — SEDECIA | Get a Free Consultation</title>
-        <meta name="description" content="Get in touch with SEDECIA for a free consultation on AI automation, custom software, web development, and enterprise digital transformation." />
-      </Helmet>
+  <title>Contact SEDECIA — Free AI Consultation | Harar, Ethiopia</title>
+  <meta name="description" content="Contact SEDECIA for a free consultation on AI automation, custom software, web development and digital transformation. Based in Harar, Ethiopia." />
+  <meta name="keywords" content="contact SEDECIA, AI consultation Ethiopia, tech company Addis Ababa, free consultation AI" />
+  <meta property="og:title" content="Contact SEDECIA — Free AI Consultation" />
+  <meta property="og:description" content="Reach out to SEDECIA for a free consultation. Based in Harar, Ethiopia. Responding within 24 hours." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sedecia.com/contact" />
+  <link rel="canonical" href="https://sedecia.com/contact" />
+</Helmet>
 
       {/* Hero */}
       <section className="contact-hero section" style={{ paddingTop: 'calc(var(--section-padding) + 80px)' }}>

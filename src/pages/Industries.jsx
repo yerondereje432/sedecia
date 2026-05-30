@@ -7,9 +7,15 @@ export default function Industries() {
   return (
     <>
       <Helmet>
-        <title>Industries — SEDECIA</title>
-        <meta name="description" content="SEDECIA Industries page." />
-      </Helmet>
+  <title>Industries We Serve — SEDECIA | AI for Every Sector</title>
+  <meta name="description" content="SEDECIA delivers AI and technology solutions across healthcare, education, finance, government, retail, and more — transforming industries across Ethiopia." />
+  <meta name="keywords" content="AI for healthcare Ethiopia, AI for education, AI fintech Ethiopia, government digital transformation, SEDECIA industries" />
+  <meta property="og:title" content="Industries We Serve — SEDECIA" />
+  <meta property="og:description" content="SEDECIA serves healthcare, education, finance, government and more with intelligent AI solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sedecia.com/industries" />
+  <link rel="canonical" href="https://sedecia.com/industries" />
+</Helmet>
       <section style={{ paddingTop:'calc(var(--section-padding) + 80px)', background:'var(--white)', textAlign:'center', paddingBottom:'var(--section-padding)', minHeight:'60vh' }}>
         <div className="container">
           <motion.div initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}>

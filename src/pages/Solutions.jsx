@@ -7,9 +7,15 @@ export default function Solutions() {
   return (
     <>
       <Helmet>
-        <title>Solutions — SEDECIA</title>
-        <meta name="description" content="SEDECIA Solutions page." />
-      </Helmet>
+  <title>Solutions — SEDECIA | AI-Powered Business Solutions</title>
+  <meta name="description" content="Explore SEDECIA's intelligent business solutions designed to digitally transform organizations across Ethiopia and Africa using AI and modern technology." />
+  <meta name="keywords" content="AI solutions Ethiopia, business solutions Africa, digital transformation Ethiopia, SEDECIA solutions" />
+  <meta property="og:title" content="Solutions — SEDECIA | AI-Powered Business Solutions" />
+  <meta property="og:description" content="SEDECIA builds intelligent solutions for businesses, schools, and enterprises across Ethiopia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sedecia.com/solutions" />
+  <link rel="canonical" href="https://sedecia.com/solutions" />
+</Helmet>
       <section style={{ paddingTop:'calc(var(--section-padding) + 80px)', background:'var(--white)', textAlign:'center', paddingBottom:'var(--section-padding)', minHeight:'60vh' }}>
         <div className="container">
           <motion.div initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}>

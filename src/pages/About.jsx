@@ -9,7 +9,7 @@ import './About.css';
 const TEAM = [
   {
     name: 'Yeron Dereje',
-    role: 'CEO & Founder',
+    role: 'Founder & CEO',
     avatar: '👨‍💼',
     bio: 'A young and visionary tech entrepreneur and developer from Ethiopia.',
   },
@@ -84,13 +84,15 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About Us — SEDECIA | AI-Powered Innovation Company</title>
-        <meta
-          name="description"
-          content="Learn about SEDECIA — our mission, vision, values, and team."
-        />
-      </Helmet>
-
+  <title>About SEDECIA — AI Company Founded in Ethiopia | Yeron Dereje</title>
+  <meta name="description" content="SEDECIA is an AI-powered tech company founded in 2025 in Ethiopia by Yeron Dereje. Delivering 10+ solutions in AI automation, software, and digital transformation." />
+  <meta name="keywords" content="SEDECIA, about SEDECIA, AI company Ethiopia, Yaron Rejig, tech startup Ethiopia" />
+  <meta property="og:title" content="About SEDECIA — AI Company Founded in Ethiopia" />
+  <meta property="og:description" content="Founded in 2026 by Yeron Dereje, SEDECIA delivers AI and digital solutions across Ethiopia and beyond." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sedecia.com/about" />
+  <link rel="canonical" href="https://sedecia.com/about" />
+</Helmet>
       {/* Hero */}
       <section className="about-hero section" ref={heroRef}>
         <div className="about-hero__orb" aria-hidden="true" />
