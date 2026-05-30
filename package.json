@@ -35,5 +35,18 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5"
-  }
+  },
+  "description": "> **Smart Technologies — Smart Solutions** > Enterprise-grade AI company website built with React + Vite",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yerondereje432/sedecia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yerondereje432/sedecia/issues"
+  },
+  "homepage": "https://github.com/yerondereje432/sedecia#readme"
 }

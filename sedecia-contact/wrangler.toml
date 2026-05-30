@@ -1,0 +1,15 @@
+name            = "sedecia-contact"
+main            = "worker.js"
+compatibility_date = "2024-09-23"
+
+# Route: POST https://sedecia.com/api/contact → this Worker
+# Set this up in the Cloudflare dashboard under Workers & Pages → your worker → Triggers
+# Or uncomment the line below once your zone is confirmed:
+# routes = [{ pattern = "sedecia.com/api/contact", zone_name = "sedecia.com" }]
+
+[vars]
+# Non-secret vars (if you ever need them)
+# APP_NAME = "SEDECIA"
+
+# Secret (never commit this to git — set it via CLI):
+# npx wrangler secret put RESEND_API_KEY
