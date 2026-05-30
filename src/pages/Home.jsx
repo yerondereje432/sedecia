@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-  <title>SEDECIA Technologies — AI-Powered Digital Transformation | Ethiopia</title>
+  <title>SEDECIA — AI-Powered Digital Transformation | Ethiopia</title>
   <meta name="description" content="SEDECIA is Ethiopia's leading AI solutions company. We deliver AI automation, custom software, web development, cybersecurity, and digital transformation for businesses of all sizes." />
   <meta name="keywords" content="AI company Ethiopia, digital transformation Ethiopia, software development Addis Ababa, AI automation, SEDECIA Technologies" />
   <meta property="og:title" content="SEDECIA Technologies — AI-Powered Digital Transformation" />
