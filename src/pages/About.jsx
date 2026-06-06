@@ -17,17 +17,17 @@ const TEAM = [
 
 const MILESTONES = [
   {
-    year: '2024',
+    year: '2025',
     title: 'Founded',
     desc: 'SEDECIA was established in Ethiopia with a mission to bring AI and digital solutions to businesses of all sizes.',
   },
   {
-    year: '2024',
+    year: '2025',
     title: 'First Solutions',
     desc: 'Delivered our first AI automation and web development projects for local clients in Ethiopia.',
   },
   {
-    year: '2025',
+    year: '2026',
     title: '20+ Solutions',
     desc: 'Surpassed 20 delivered solutions spanning AI automation, chatbots, custom software, and web development.',
   },
@@ -88,7 +88,7 @@ export default function About() {
   <meta name="description" content="SEDECIA is an AI-powered tech company founded in 2025 in Ethiopia by Yeron Dereje. Delivering 10+ solutions in AI automation, software, and digital transformation." />
   <meta name="keywords" content="SEDECIA, about SEDECIA, AI company Ethiopia, Yaron Rejig, tech startup Ethiopia" />
   <meta property="og:title" content="About SEDECIA — AI Company Founded in Ethiopia" />
-  <meta property="og:description" content="Founded in 2026 by Yeron Dereje, SEDECIA delivers AI and digital solutions across Ethiopia and beyond." />
+  <meta property="og:description" content="Founded in 2025 by Yeron Dereje, SEDECIA delivers AI and digital solutions across Ethiopia and beyond." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sedecia.com/about" />
   <link rel="canonical" href="https://sedecia.com/about" />
@@ -117,7 +117,7 @@ export default function About() {
 
             <div className="about-hero__stats">
               {[
-                ['2024', 'Founded'],
+                ['2025', 'Founded'],
                 ['20+', 'Solutions Delivered'],
                 ['Ethiopia', 'Based In'],
               ].map(([num, lbl]) => (
@@ -224,7 +224,7 @@ export default function About() {
               style={{ color: 'var(--white)', marginTop: '1rem' }}
             >
               From Startup to{' '}
-              <span style={{ color: 'var(--orange)' }}>Global Leader</span>
+              <span style={{ color: 'var(--orange)' }}>Problem Solver</span>
             </h2>
           </motion.div>
 
@@ -295,19 +295,25 @@ export default function About() {
 
                 <div className="team-card__socials">
                   <a
-                    href="#"
+                    href="https://t.me/yeronderejee"
                     className="team-card__social"
-                    aria-label="LinkedIn"
+                    aria-label="Telegram"
                   >
-                    in
+➤
                   </a>
-
                   <a
-                    href="#"
+                    href="https://x.com/yerondereje432"
                     className="team-card__social"
                     aria-label="Twitter"
                   >
                     𝕏
+                  </a>
+<a
+                    href="https://github.com/yerondereje432"
+                    className="team-card__social"
+                    aria-label="GitHub"
+                  >
+                  💻
                   </a>
                 </div>
               </motion.div>
