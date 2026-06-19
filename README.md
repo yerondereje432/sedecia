@@ -1,6 +1,6 @@
-# 🚀 Smart Technologies — Official Website
+# 🚀 SEDECIA Technologies — Official Website
 
-> **Smart Technologies — Smart Solutions**
+> **SEDECIA Technologies — Smart Solutions**
 > Enterprise-grade AI company website built with React + Vite
 
 ---
@@ -86,7 +86,7 @@ smart-technologies/
 ### Step 1 — Open Project in PyCharm
 
 1. Open **PyCharm**
-2. Go to **File → Open** and select the `smart-technologies/` folder
+2. Go to **File → Open** and select the `sedecia-technologies/` folder
 3. PyCharm will detect it as a JavaScript/Node project
 
 ### Step 2 — Configure Node.js Interpreter
