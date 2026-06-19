@@ -311,9 +311,9 @@ Access in code with: `import.meta.env.VITE_API_URL`
 
 ## 🆘 Support
 
-**Email:** info@smarttechnologies.com
-**Website:** https://smarttechnologies.com
+**Email:** info@sedecia.com
+**Website:** https://sedecia.com
 
 ---
 
-*Built with ❤️ by Smart Technologies — Smart Solutions*
+*Built with ❤️ by SEDECIA Technologies — Smart Solutions*
