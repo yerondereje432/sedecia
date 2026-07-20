@@ -343,3 +343,7 @@
 .about-values__card:nth-child(even) { transform: translateY(14px); }
 .about-values__card:nth-child(even):hover { transform: translateY(8px); }
 @media (max-width:768px) { .about-values__card:nth-child(even) { transform:none; } }
+
+/* Match the approved hero headline typography */
+.about-hero__title { font-family: var(--font-display); font-weight: 600; line-height: .94; letter-spacing: -.065em; }
+.about-hero__title-word { display: inline-block; will-change: transform, opacity; }
