@@ -140,8 +140,18 @@ export default function HeroSection() {
         </motion.h1>
 
         {/* Subtext */}
-        <motion.p className="hero__sub body-lg" variants={fadeUp} initial="hidden" animate="visible" custom={2}>
-          {t('hero.subtext')}
+        <motion.p className="hero__sub body-lg hero__sub--reveal" variants={fadeUp} initial="hidden" animate="visible" custom={2}>
+          {t('hero.subtext').split(' ').map((word, i) => (
+            <motion.span
+              key={`${word}-${i}`}
+              className="hero__reveal-word"
+              initial={{ opacity: 0, y: 18, rotateX: -55 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ delay: 0.55 + i * 0.035, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {word}{' '}
+            </motion.span>
+          ))}
         </motion.p>
 
         {/* CTAs */}
