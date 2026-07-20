@@ -100,6 +100,14 @@ export default function HeroSection() {
       <div className="hero__bg-orb hero__bg-orb--2" aria-hidden="true" />
       <div className="hero__bg-grid" aria-hidden="true" />
 
+      {/* Hand-crafted visual layer: static, tactile and lightweight — not a stock video */}
+      <div className="hero__human-art" aria-hidden="true">
+        <div className="hero__human-art-shape hero__human-art-shape--large" />
+        <div className="hero__human-art-shape hero__human-art-shape--small" />
+        <div className="hero__human-art-note">ideas<br /><span>into impact</span></div>
+        <div className="hero__human-art-line" />
+      </div>
+
       {/* Floating Tech Tags */}
       {FLOATING_TAGS.map((tag, i) => (
         <motion.div
