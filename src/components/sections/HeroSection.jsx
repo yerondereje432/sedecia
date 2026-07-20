@@ -100,6 +100,15 @@ export default function HeroSection() {
       <div className="hero__bg-orb hero__bg-orb--2" aria-hidden="true" />
       <div className="hero__bg-grid" aria-hidden="true" />
 
+      {/* Lightweight 3D brand mark: CSS-only so the page stays fast */}
+      <div className="hero__scene" aria-hidden="true">
+        <div className="hero__scene-ring hero__scene-ring--one" />
+        <div className="hero__scene-ring hero__scene-ring--two" />
+        <div className="hero__scene-core"><span>SD</span></div>
+        <div className="hero__scene-orbit hero__scene-orbit--one" />
+        <div className="hero__scene-orbit hero__scene-orbit--two" />
+      </div>
+
       {/* Floating Tech Tags */}
       {FLOATING_TAGS.map((tag, i) => (
         <motion.div
