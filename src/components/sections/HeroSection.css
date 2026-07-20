@@ -288,6 +288,7 @@
 }
 .hero__reveal-word {
   display: inline-block;
+  margin-right: 0.28em;
   transform-origin: 50% 100%;
   will-change: transform, opacity;
 }
