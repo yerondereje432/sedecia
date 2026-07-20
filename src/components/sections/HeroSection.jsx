@@ -100,14 +100,6 @@ export default function HeroSection() {
       <div className="hero__bg-orb hero__bg-orb--2" aria-hidden="true" />
       <div className="hero__bg-grid" aria-hidden="true" />
 
-      {/* Hand-crafted visual layer: static, tactile and lightweight — not a stock video */}
-      <div className="hero__human-art" aria-hidden="true">
-        <div className="hero__human-art-shape hero__human-art-shape--large" />
-        <div className="hero__human-art-shape hero__human-art-shape--small" />
-        <div className="hero__human-art-note">ideas<br /><span>into impact</span></div>
-        <div className="hero__human-art-line" />
-      </div>
-
       {/* Floating Tech Tags */}
       {FLOATING_TAGS.map((tag, i) => (
         <motion.div
@@ -140,11 +132,11 @@ export default function HeroSection() {
 
         {/* Headline */}
         <motion.h1 className="hero__headline display-xl" variants={fadeUp} initial="hidden" animate="visible" custom={1}>
-          <span className="gradient-text">{t('hero.headline1')}</span>
+          <motion.span className="hero__headline-line gradient-text" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .35, duration: .7 }}>{t('hero.headline1')}</motion.span>
           <br />
-          <span className="text-navy">{t('hero.headline2')}</span>
+          <motion.span className="hero__headline-line text-navy" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .48, duration: .7 }}>{t('hero.headline2')}</motion.span>
           <br />
-          <span className="text-navy">{t('hero.headline3')}</span>
+          <motion.span className="hero__headline-line text-navy" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .61, duration: .7 }}>{t('hero.headline3')}</motion.span>
         </motion.h1>
 
         {/* Subtext */}
