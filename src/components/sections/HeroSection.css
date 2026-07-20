@@ -270,3 +270,24 @@
   .hero__headline { font-size: clamp(3rem, 16vw, 5rem); }
   .hero__sub { max-width: 90%; }
 }
+
+.hero__headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: .94;
+  text-wrap: balance;
+}
+.hero__headline .gradient-text {
+  background: none;
+  -webkit-text-fill-color: var(--orange);
+  color: var(--orange);
+}
+.hero__sub--reveal {
+  perspective: 700px;
+  line-height: 1.8;
+}
+.hero__reveal-word {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
