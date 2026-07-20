@@ -110,3 +110,8 @@
   .cta-section__trust-sep { display: none; }
   .cta-section__trust { flex-direction: column; gap: 0.5rem; }
 }
+
+.cta-section { overflow: hidden; }
+.cta-section__inner { position: relative; isolation: isolate; }
+.cta-section__title { letter-spacing: -.045em; }
+.cta-section__title-accent { display: inline-block; transform: rotate(-2deg); }
