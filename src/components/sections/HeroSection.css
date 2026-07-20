@@ -292,3 +292,6 @@
   transform-origin: 50% 100%;
   will-change: transform, opacity;
 }
+
+/* Staggered reveal timing for hero headline lines */
+.hero__headline-line { display: inline-block; will-change: transform, opacity; }
