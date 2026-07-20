@@ -115,3 +115,8 @@
 .cta-section__inner { position: relative; isolation: isolate; }
 .cta-section__title { letter-spacing: -.045em; }
 .cta-section__title-accent { display: inline-block; transform: rotate(-2deg); }
+
+.cta-section { border-radius: 0; }
+.cta-section__inner { padding: 3rem; border: 1px solid rgba(255,255,255,.13); border-radius: 4px 46px 4px 46px; background: rgba(255,255,255,.025); }
+.cta-section__title { font-size: clamp(2.5rem, 6vw, 5.5rem); }
+@media (max-width:640px) { .cta-section__inner { padding: 2rem 1.25rem; border-radius: 4px 28px 4px 28px; } }
