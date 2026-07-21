@@ -1,22 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import './Footer.css';
 
 const SERVICES = [
-  'AI Automation', 'AI Chatbots', 'Custom Software',
-  'Web Development', 'Mobile App Development', 'Cybersecurity',
-  'Data Analytics',
+  'Web Development', 'Web Design', 'Custom Software', 'UI/UX Design',
 ];
 
 const COMPANY_LINKS = [
-  { label: 'About Us',    path: '/about' },
-  { label: 'Services',    path: '/services' },
-  { label: 'Portfolio',   path: '/portfolio' },
-  { label: 'Blog',        path: '/blog' },
-  { label: 'Careers',     path: '/careers' },
-  { label: 'Contact',     path: '/contact' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Portfolio', path: '/portfolio' },
+  { label: 'Contact', path: '/contact' },
 ];
 
 const SOCIALS = [
@@ -89,21 +84,13 @@ export default function Footer() {
 
             {/* Newsletter */}
             <div className="footer__col footer__newsletter">
-              <h3 className="footer__col-title">Stay Updated</h3>
+              <h3 className="footer__col-title">Start a project</h3>
               <p className="footer__desc" style={{ marginBottom: '1rem' }}>
-                Get the latest AI insights and company news delivered to your inbox.
+                Have a website, interface, or software idea? Tell us what you are building.
               </p>
-              <form className="footer__form" onSubmit={e => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="footer__input"
-                  aria-label="Email for newsletter"
-                />
-                <button type="submit" className="footer__submit">
-                  Subscribe
-                </button>
-              </form>
+              <Link to="/contact" className="btn btn-primary" style={{ marginBottom: '1.5rem' }}>
+                Tell us about it →
+              </Link>
               <div className="footer__contact-info">
                 <div className="footer__contact-item">
                   <span className="footer__contact-icon">✉</span>
