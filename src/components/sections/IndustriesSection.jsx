@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './IndustriesSection.css';
 
-const INDUSTRIES = [
+const AUDIENCES = [
   { icon: '🎓', title: 'Schools', desc: 'Clear websites and Learning Management Systems for school communities.' },
  { icon: '🏛️', title: 'Universities', desc: 'Custom AI platforms that replace manual admin processes with fast, organized digital systems.' },
   { icon: '🏨', title: 'Hotels', desc: 'Thoughtful digital experiences for hospitality brands and their guests.' },
