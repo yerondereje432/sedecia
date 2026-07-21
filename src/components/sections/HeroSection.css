@@ -295,3 +295,6 @@
 
 /* Staggered reveal timing for hero headline lines */
 .hero__headline-line { display: inline-block; will-change: transform, opacity; }
+
+.hero__pixel-liquid { position: absolute; inset: 0; z-index: 0; opacity: .78; }
+.hero__pixel-liquid__canvas { opacity: .9; }
