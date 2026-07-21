@@ -7,7 +7,7 @@ import './AboutPreview.css';
 
 const VALUES = [
   { mark: '01', title: 'Clarity', desc: 'We make digital products easier to understand and use.' },
-  { mark: '02', title: 'Craft', desc: 'We care about the details people feel in every interaction.' },
+  { mark: '02', title: 'Integrity', desc: 'We say what we mean, and we do what we say.' },
   { mark: '03', title: 'Partnership', desc: 'We work closely with the people who know the problem best.' },
   { mark: '04', title: 'Practicality', desc: 'We build useful solutions that fit the organization behind them.' },
 ];
