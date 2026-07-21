@@ -1,0 +1,31 @@
+.portfolio-page { background: var(--white); }
+.portfolio-hero { position: relative; overflow: hidden; background: var(--navy); color: var(--white); padding-top: calc(var(--section-padding) + 80px); }
+.portfolio-hero__glow { position:absolute; width:600px; height:600px; right:-14%; top:-25%; border-radius:50%; background:radial-gradient(circle, rgba(244,121,32,.24), transparent 68%); filter:blur(18px); }
+.portfolio-hero__layout { position:relative; z-index:1; display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:4rem; }
+.portfolio-hero__title { margin-block:1.3rem; color:var(--white); font-size:clamp(3.6rem, 8vw, 7.5rem); line-height:.9; letter-spacing:-.07em; }
+.portfolio-hero__sub { max-width:560px; color:rgba(255,255,255,.68); }
+.portfolio-hero__visual { position:relative; min-height:360px; }
+.portfolio-hero__visual-label { position:absolute; right:1.2rem; bottom:1rem; font:600 .72rem var(--font-display); letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.5); }
+.portfolio-list { background:#f3f5f7; }
+.portfolio-list__intro { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:2.5rem; color:var(--text-gray); }
+.portfolio-list__intro .section-label { color:var(--orange); font:700 .75rem var(--font-display); letter-spacing:.14em; text-transform:uppercase; }
+.portfolio-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; }
+.portfolio-card { min-height:570px; display:flex; flex-direction:column; overflow:hidden; background:var(--white); border-radius:4px 30px 4px 30px; box-shadow:0 10px 30px rgba(27,42,74,.06); transition:transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s ease; }
+.portfolio-card:nth-child(2) { border-radius:30px 4px 30px 4px; transform:translateY(22px); }
+.portfolio-card:hover { transform:translateY(-10px); box-shadow:0 26px 55px rgba(27,42,74,.14); }
+.portfolio-card:nth-child(2):hover { transform:translateY(12px); }
+.portfolio-card__top { display:flex; justify-content:space-between; padding:1.35rem 1.5rem; color:var(--text-gray); font:600 .7rem var(--font-display); letter-spacing:.08em; text-transform:uppercase; }
+.portfolio-card__top span:first-child { color:var(--orange); }
+.portfolio-card__visual { height:190px; margin:0 1rem; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; background:linear-gradient(145deg, var(--navy), var(--navy-light)); }
+.portfolio-card--orange .portfolio-card__visual { background:linear-gradient(145deg, #f47920, #b94d0d); }
+.portfolio-card__mark { color:rgba(255,255,255,.9); font:600 7rem/.8 var(--font-display); letter-spacing:-.15em; transform:rotate(-8deg); }
+.portfolio-card__rule { position:absolute; width:70%; height:1px; bottom:2rem; background:rgba(255,255,255,.38); transform:rotate(-8deg); }
+.portfolio-card__content { display:flex; flex:1; flex-direction:column; padding:1.8rem 1.5rem 1.5rem; }
+.portfolio-card__content h2 { color:var(--navy); font:600 clamp(1.6rem, 2.5vw, 2.2rem)/1 var(--font-display); letter-spacing:-.05em; }
+.portfolio-card__content > p { margin-top:.9rem; color:var(--text-gray); font-size:.9rem; line-height:1.7; }
+.portfolio-card__work { margin-top:1.3rem; padding-top:1rem; border-top:1px solid var(--mid-gray); color:var(--text-dark); font-size:.82rem; line-height:1.6; }
+.portfolio-card__work span { display:block; margin-bottom:.3rem; color:var(--orange); font:700 .68rem var(--font-display); letter-spacing:.1em; text-transform:uppercase; }
+.portfolio-card__status { margin-top:auto; padding-top:1.3rem; color:var(--navy); font:600 .75rem var(--font-display); }
+.portfolio-card__status::before { content:'↗'; color:var(--orange); margin-right:.45rem; }
+@media (max-width:900px) { .portfolio-hero__layout { grid-template-columns:1fr; gap:2.5rem; } .portfolio-hero__visual { max-width:600px; width:100%; } .portfolio-grid { grid-template-columns:1fr 1fr; } .portfolio-card:nth-child(2) { transform:none; } .portfolio-card:nth-child(2):hover { transform:translateY(-10px); } }
+@media (max-width:600px) { .portfolio-grid { grid-template-columns:1fr; } .portfolio-list__intro { display:block; } .portfolio-list__intro p { margin-top:.6rem; } .portfolio-card { min-height:500px; } }
