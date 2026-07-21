@@ -1,7 +1,7 @@
 .cta-section { position:relative; overflow:hidden; padding-block:clamp(5rem,10vw,9rem); background:var(--navy); color:var(--white); text-align:center; }
 .cta-section__grid-bg { position:absolute; inset:0; opacity:.28; background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px); background-size:64px 64px; mask-image:linear-gradient(to bottom,transparent,black 25%,black 75%,transparent); }
 .cta-section__orb { position:absolute; border-radius:50%; pointer-events:none; filter:blur(50px); }
-.cta-section__orb--1 { width:460px; height:460px; left:-18%; top:-24%; background:radial-gradient(circle,rgba(244,121,32,.24),transparent 68%); }
+.cta-section__orb--1 { width:460px; height:460px; left:-18%; top:-24%; background:radial-gradient(circle,rgba(244,121,32,.24),transparent 69%); }
 .cta-section__orb--2 { width:380px; height:380px; right:-12%; bottom:-28%; background:radial-gradient(circle,rgba(255,255,255,.09),transparent 68%); }
 .cta-section__inner { position:relative; z-index:2; max-width:880px; margin-inline:auto; display:flex; flex-direction:column; align-items:center; }
 .cta-section__eyebrow { display:inline-flex; align-items:center; gap:.5rem; color:var(--orange); font:700 .7rem var(--font-display); letter-spacing:.14em; text-transform:uppercase; }
