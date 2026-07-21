@@ -1,36 +1,35 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './TechStackSection.css';
 
 const TECHS = [
-  { name: 'React', emoji: '⚛️' },    { name: 'Python', emoji: '🐍' },
-  { name: 'TensorFlow', emoji: '🧠' }, { name: 'AWS', emoji: '☁️' },
-  { name: 'Node.js', emoji: '🟢' },   { name: 'Docker', emoji: '🐳' },
-  { name: 'Kubernetes', emoji: '⚙️' },{ name: 'OpenAI', emoji: '🤖' },
-  { name: 'PostgreSQL', emoji: '🗄️' },{ name: 'MongoDB', emoji: '🍃' },
-  { name: 'Firebase', emoji: '🔥' },  { name: 'Next.js', emoji: '▲' },
-  { name: 'Swift', emoji: '🍎' },     { name: 'Flutter', emoji: '💙' },
-  { name: 'GCP', emoji: '🌐' },       { name: 'Azure', emoji: '💠' },
+  { name: 'React', type: 'Frontend' }, { name: 'Next.js', type: 'Frontend' }, { name: 'Vite', type: 'Frontend' },
+  { name: 'TypeScript', type: 'Language' }, { name: 'Tailwind CSS', type: 'Interface' }, { name: 'Framer Motion', type: 'Motion' },
+  { name: 'Python', type: 'Backend' }, { name: 'Flask', type: 'Backend' }, { name: 'FastAPI', type: 'Backend' },
+  { name: 'PostgreSQL', type: 'Data' }, { name: 'Supabase', type: 'Platform' }, { name: 'Three.js', type: '3D' },
 ];
 
+function TechChip({ tech, index, inView }) {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], [index % 2 ? 12 : -8, index % 2 ? -12 : 8]);
+  return <motion.div ref={ref} className="techstack__chip" style={{ y }} initial={{ opacity: 0, scale: .92 }} animate={inView ? { opacity: 1, scale: 1 } : {}} transition={{ delay: index * .045, duration: .45 }}><span className="techstack__chip-dot" /><span>{tech.name}</span><small>{tech.type}</small></motion.div>;
+}
+
 export default function TechStackSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: .2 });
   return (
     <section className="techstack section" ref={ref}>
       <div className="container">
-        <motion.div className="techstack__header" initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-          <span className="badge badge-orange">Technology Stack</span>
-          <h2 className="display-md techstack__title">Built with <span className="gradient-text">Best-in-Class</span> Tools</h2>
-        </motion.div>
-        <div className="techstack__track-wrap" aria-label="Technology stack">
-          <div className="techstack__track">
-            {[...TECHS, ...TECHS].map((tech, i) => (
-              <div key={i} className="techstack__chip">
-                <span>{tech.emoji}</span>
-                <span>{tech.name}</span>
-              </div>
-            ))}
+        <div className="techstack__layout">
+          <motion.div className="techstack__header" initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: .65 }}>
+            <span className="badge badge-orange">Our toolkit</span>
+            <h2 className="display-md techstack__title">The tools behind the <span className="gradient-text">work</span></h2>
+            <p>We choose technology around the product, the people using it, and the problem it needs to solve.</p>
+          </motion.div>
+          <div className="techstack__grid" aria-label="Technology stack">
+            {TECHS.map((tech, index) => <TechChip key={tech.name} tech={tech} index={index} inView={inView} />)}
           </div>
         </div>
       </div>
