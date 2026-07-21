@@ -20,3 +20,6 @@
 .services-page__link span { font-size:1.2rem; transition:transform .25s ease; }
 .services-page__link:hover span { transform:translate(4px,-4px); }
 @media (max-width:700px) { .services-page__grid { grid-template-columns:1fr; } .services-page__card:nth-child(even) { transform:none; } .services-page__card:nth-child(even):hover { transform:translateY(-9px); } }
+
+.services-page__title, .services-page__card h2 { font-family: var(--font-display); font-weight: 600; }
+.services-page__reveal-line { display:inline-block; transform-origin:50% 100%; will-change:transform,opacity; }
