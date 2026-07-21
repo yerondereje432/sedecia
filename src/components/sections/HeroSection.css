@@ -299,8 +299,4 @@
 .hero__pixel-liquid { position: absolute; inset: 0; z-index: 0; opacity: .78; }
 .hero__pixel-liquid__canvas { opacity: .9; }
 
-/* PixelLiquidBg is the active hero background; disable the legacy blob layer. */
-.hero::after { display: none !important; }
-.hero__pixel-liquid { opacity: 1; }
-.hero__bg-grid { opacity: .16; }
-.hero__canvas { opacity: .14; }
+.hero__ethereal { z-index: 0; opacity: .85; }
