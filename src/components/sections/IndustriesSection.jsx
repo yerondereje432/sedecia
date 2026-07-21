@@ -3,50 +3,30 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './IndustriesSection.css';
 
-const INDUSTRIES = [
-  { icon: '🏦', title: 'Banking & Finance',   desc: 'AI-powered fraud detection, smart banking, and fintech solutions.' },
-  { icon: '🏥', title: 'Healthcare',           desc: 'Digital health platforms, AI diagnostics, and hospital management.' },
-  { icon: '🎓', title: 'Education',            desc: 'Smart learning systems, e-learning platforms, and EdTech tools.' },
-  { icon: '🏭', title: 'Manufacturing',        desc: 'Industrial automation, predictive maintenance, and supply chain AI.' },
-  { icon: '🛒', title: 'Retail & eCommerce',   desc: 'Personalization engines, inventory AI, and customer analytics.' },
-  { icon: '🏛️', title: 'Government',           desc: 'Smart city infrastructure, digital governance, and citizen services.' },
-  { icon: '🚚', title: 'Logistics',            desc: 'Route optimization, fleet management, and real-time tracking AI.' },
-  { icon: '🌱', title: 'Agriculture',          desc: 'Precision farming, crop prediction, and agri-tech automation.' },
+const AUDIENCES = [
+  { icon: '🎓', title: 'Schools', desc: 'Clear websites and Learning Management Systems for school communities.' },
+ { icon: '🏛️', title: 'Universities', desc: 'Custom AI platforms that replace manual admin processes with fast, organized digital systems.' }
+  { icon: '🏨', title: 'Hotels', desc: 'Thoughtful digital experiences for hospitality brands and their guests.' },
+  { icon: '🧭', title: 'Tour Guides', desc: 'Web experiences that make local knowledge, trips, and services easier to discover.' },
+  { icon: '🏋️', title: 'Gyms', desc: 'Useful digital touchpoints for memberships, programs, schedules, and communities.' },
 ];
 
 export default function IndustriesSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   return (
     <section className="industries section" ref={ref}>
       <div className="container">
-        <motion.div
-          className="industries__header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="badge badge-navy">Industries We Serve</span>
-          <h2 className="display-lg industries__title">
-            Built for <span className="gradient-text">Every Sector</span>
-          </h2>
-          <p className="body-lg">
-            Our AI solutions are tailored to the unique demands of diverse industries worldwide.
-          </p>
+        <motion.div className="industries__header" initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: .6 }}>
+          <span className="badge badge-navy">Who we build for</span>
+          <h2 className="display-lg industries__title">Built for <span className="gradient-text">real organizations</span></h2>
+          <p className="body-lg">We work best with teams that need a clear digital presence, a better interface, or software shaped around the way they work.</p>
         </motion.div>
-
         <div className="industries__grid">
-          {INDUSTRIES.map((ind, i) => (
-            <motion.div
-              key={ind.title}
-              className="industries__card"
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-            >
-              <span className="industries__icon">{ind.icon}</span>
-              <h3 className="industries__card-title">{ind.title}</h3>
-              <p className="industries__card-desc">{ind.desc}</p>
+          {AUDIENCES.map((item, index) => (
+            <motion.div key={item.title} className="industries__card" initial={{ opacity: 0, y: 26, scale: .96 }} animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}} transition={{ delay: index * .09, duration: .55, ease: [.16, 1, .3, 1] }}>
+              <span className="industries__icon">{item.icon}</span>
+              <h3 className="industries__card-title">{item.title}</h3>
+              <p className="industries__card-desc">{item.desc}</p>
             </motion.div>
           ))}
         </div>
