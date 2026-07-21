@@ -29,3 +29,6 @@
 .portfolio-card__status::before { content:'↗'; color:var(--orange); margin-right:.45rem; }
 @media (max-width:900px) { .portfolio-hero__layout { grid-template-columns:1fr; gap:2.5rem; } .portfolio-hero__visual { max-width:600px; width:100%; } .portfolio-grid { grid-template-columns:1fr 1fr; } .portfolio-card:nth-child(2) { transform:none; } .portfolio-card:nth-child(2):hover { transform:translateY(-10px); } }
 @media (max-width:600px) { .portfolio-grid { grid-template-columns:1fr; } .portfolio-list__intro { display:block; } .portfolio-list__intro p { margin-top:.6rem; } .portfolio-card { min-height:500px; } }
+
+.portfolio-hero__title, .portfolio-card__content h2 { font-family: var(--font-display); font-weight: 600; }
+.portfolio-hero__reveal-line { display:inline-block; transform-origin:50% 100%; will-change:transform,opacity; }
