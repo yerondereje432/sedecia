@@ -3,73 +3,56 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import CTASection from '@components/sections/CTASection';
+import './Services.css';
 
 const SERVICES = [
-  { icon: '🤖', title: 'AI Automation', desc: 'End-to-end intelligent automation solutions that eliminate manual work, reduce errors, and scale effortlessly with your business.', features: ['RPA & Workflow Automation','Intelligent Document Processing','AI-Powered Decision Engines','Process Mining & Optimization'] },
-  { icon: '💬', title: 'AI Chatbots', desc: 'Conversational AI that delivers human-like customer experiences 24/7 across web, mobile, and messaging platforms.', features: ['NLP-Powered Conversations','Multi-Channel Deployment','CRM Integration','Analytics Dashboard'] },
-  { icon: '⚙️', title: 'Custom Software', desc: 'Tailor-made software solutions engineered from the ground up to solve your specific business challenges.', features: ['Agile Development','API-First Architecture','Scalable Infrastructure','Ongoing Maintenance'] },
-  { icon: '🌐', title: 'Web Development', desc: 'High-performance, visually stunning web platforms built with modern technologies for speed, SEO, and conversions.', features: ['React / Next.js','PWA Development','CMS Integration','Performance Optimization'] },
-  { icon: '📱', title: 'Mobile Apps', desc: 'Native iOS & Android and cross-platform mobile applications that delight users and drive engagement.', features: ['React Native / Flutter','Offline-First Design','Push Notifications','App Store Optimization'] },
-  { icon: '🔐', title: 'Cybersecurity', desc: 'Comprehensive security solutions that protect your digital assets, data, and reputation around the clock.', features: ['Penetration Testing','SOC Monitoring','Zero Trust Architecture','Compliance & Auditing'] },
-  { icon: '📊', title: 'Data Analytics', desc: 'Transform your raw data into strategic intelligence with beautiful dashboards and actionable insights.', features: ['Business Intelligence','Data Warehousing','Real-Time Analytics','Data Pipeline Engineering'] },
-  { icon: '🏢', title: 'Enterprise AI', desc: 'Large-scale AI integration tailored for complex enterprise environments and mission-critical workflows.', features: ['AI Strategy Consulting','Enterprise LLM Deployment','Legacy System Integration','Change Management'] },
-  { icon: '🎯', title: 'IT Consulting', desc: 'Strategic technology advisory to align your IT investments, roadmap, and team with business objectives.', features: ['Technology Assessment','Digital Roadmap','Vendor Selection','IT Governance'] },
+  { number: '01', title: 'Web Development', desc: 'Fast, reliable websites and web platforms built around the way your organization actually works.', features: ['Responsive frontend development', 'CMS and content systems', 'Performance and accessibility', 'Deployment-ready delivery'] },
+  { number: '02', title: 'Web Design', desc: 'Clear, distinctive digital experiences that make your organization easier to understand and easier to trust.', features: ['Visual direction and layout', 'Brand-aware interface design', 'Responsive design systems', 'Prototypes and design handoff'] },
+  { number: '03', title: 'Custom Software', desc: 'Practical software for specific workflows—built from the real problem rather than from a template.', features: ['Workflow mapping', 'Custom dashboards and portals', 'Role-based experiences', 'Iteration and maintenance'] },
+  { number: '04', title: 'UI/UX Design', desc: 'Thoughtful interfaces that help people complete important tasks with less friction and more confidence.', features: ['User flows and information architecture', 'Wireframes and prototypes', 'Design systems', 'Usability-focused refinement'] },
 ];
+
+const reveal = { hidden: { opacity: 0, y: 28 }, visible: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * .1, duration: .6, ease: [.16, 1, .3, 1] } }) };
 
 export default function Services() {
   return (
     <>
       <Helmet>
-  <title>AI & Tech Services — SEDECIA | Automation, Software, Web & More</title>
-  <meta name="description" content="SEDECIA offers AI automation, chatbots, custom software, web development, mobile apps, cybersecurity, data analytics, and enterprise AI solutions in Ethiopia." />
-  <meta name="keywords" content="AI services Ethiopia, software development Ethiopia, web development Ethiopia, AI automation, chatbot development, SEDECIA services" />
-  <meta property="og:title" content="AI & Tech Services — SEDECIA" />
-  <meta property="og:description" content="End-to-end AI and technology services: automation, chatbots, custom software, web, mobile, cybersecurity and more." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sedecia.com/services" />
-  <link rel="canonical" href="https://sedecia.com/services" />
-</Helmet>
-
-      <section className="page-hero" style={{ paddingTop:'calc(var(--section-padding) + 80px)', background:'var(--white)', textAlign:'center', paddingBottom:'var(--section-padding)' }}>
-        <div className="page-hero__orb" style={{ position:'absolute', width:'600px', height:'600px', background:'radial-gradient(circle, rgba(244,121,32,0.08) 0%, transparent 70%)', top:'-20%', left:'50%', transform:'translateX(-50%)', borderRadius:'50%', filter:'blur(40px)', pointerEvents:'none' }} aria-hidden="true" />
-        <div className="container" style={{ position:'relative', zIndex:2 }}>
-          <motion.div initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}>
-            <span className="badge badge-orange">Our Services</span>
-            <h1 className="display-xl" style={{ color:'var(--navy)', marginBlock:'1rem' }}>
-              Everything You Need to <span className="gradient-text">Grow with AI</span>
-            </h1>
-            <p className="body-lg" style={{ maxWidth:'580px', marginInline:'auto' }}>
-              From strategy to deployment — we deliver end-to-end AI and technology solutions that transform how your organization operates.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="section" style={{ background:'var(--off-white)' }}>
-        <div className="container">
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(340px, 1fr))', gap:'1.5rem' }}>
-            {SERVICES.map((s, i) => (
-              <motion.div key={s.title} className="card" initial={{ opacity:0, y:30 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }} transition={{ delay: i * 0.05, duration:0.5 }}
-                style={{ display:'flex', flexDirection:'column', gap:'1rem' }}>
-                <div style={{ fontSize:'2.5rem' }}>{s.icon}</div>
-                <h2 style={{ fontFamily:'var(--font-display)', fontSize:'1.2rem', fontWeight:700, color:'var(--navy)' }}>{s.title}</h2>
-                <p style={{ fontSize:'0.9rem', color:'var(--text-gray)', lineHeight:1.7 }}>{s.desc}</p>
-                <ul style={{ display:'flex', flexDirection:'column', gap:'0.4rem', marginTop:'0.5rem' }}>
-                  {s.features.map(f => (
-                    <li key={f} style={{ display:'flex', alignItems:'center', gap:'0.5rem', fontSize:'0.85rem', color:'var(--text-gray)' }}>
-                      <span style={{ color:'var(--orange)', fontWeight:700 }}>✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact" className="btn btn-outline btn-sm" style={{ marginTop:'auto', alignSelf:'flex-start' }}>
-                  Get Started →
-                </Link>
-              </motion.div>
-            ))}
+        <title>Services — SEDECIA Technologies</title>
+        <meta name="description" content="SEDECIA specializes in web development, web design, custom software, and UI/UX design for schools, universities, hotels, tour guides, and gyms." />
+        <meta property="og:title" content="Services — SEDECIA Technologies" />
+        <meta property="og:description" content="Focused web, software, and UI/UX services for organizations that need a clear digital presence and practical tools." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://sedecia.com/services" />
+      </Helmet>
+      <main className="services-page">
+        <section className="services-page__hero section">
+          <div className="services-page__glow" aria-hidden="true" />
+          <div className="container">
+            <motion.div initial="hidden" animate="visible" variants={reveal}>
+              <span className="badge badge-orange">What we do</span>
+              <h1 className="display-xl services-page__title"><span>Focused tools</span><br /><span className="gradient-text">for real work</span></h1>
+              <p className="body-lg services-page__intro">SEDECIA builds websites, interfaces, and custom software for organizations that want to communicate clearly and work better.</p>
+            </motion.div>
           </div>
-        </div>
-      </section>
-
+        </section>
+        <section className="services-page__list section">
+          <div className="container">
+            <div className="services-page__eyebrow">Our capabilities</div>
+            <div className="services-page__grid">
+              {SERVICES.map((service, index) => (
+                <motion.article key={service.title} className="services-page__card" custom={index} initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={reveal}>
+                  <div className="services-page__card-top"><span>{service.number}</span><span>SEDECIA</span></div>
+                  <h2>{service.title}</h2>
+                  <p>{service.desc}</p>
+                  <ul>{service.features.map(feature => <li key={feature}><span>+</span>{feature}</li>)}</ul>
+                  <Link to="/contact" className="services-page__link">Discuss this work <span>↗</span></Link>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
       <CTASection />
     </>
   );
