@@ -5,7 +5,7 @@ import './IndustriesSection.css';
 
 const AUDIENCES = [
   { icon: '🎓', title: 'Schools', desc: 'Clear websites and Learning Management Systems for school communities.' },
- { icon: '🏛️', title: 'Universities', desc: 'Custom AI platforms that replace manual admin processes with fast, organized digital systems.' }
+ { icon: '🏛️', title: 'Universities', desc: 'Custom AI platforms that replace manual admin processes with fast, organized digital systems.' },
   { icon: '🏨', title: 'Hotels', desc: 'Thoughtful digital experiences for hospitality brands and their guests.' },
   { icon: '🧭', title: 'Tour Guides', desc: 'Web experiences that make local knowledge, trips, and services easier to discover.' },
   { icon: '🏋️', title: 'Gyms', desc: 'Useful digital touchpoints for memberships, programs, schedules, and communities.' },
