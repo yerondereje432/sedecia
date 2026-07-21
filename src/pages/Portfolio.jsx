@@ -59,10 +59,10 @@ export default function Portfolio() {
           <div className="container portfolio-hero__layout">
             <motion.div initial="hidden" animate="visible" variants={reveal}>
               <span className="badge badge-orange">Selected work</span>
-              <h1 className="display-xl portfolio-hero__title">
-                <span>Things we</span><br />
-                <span className="gradient-text">have built</span>
-              </h1>
+              <motion.h1 className="display-xl portfolio-hero__title">
+                <motion.span className="portfolio-hero__reveal-line" initial={{ opacity: 0, y: 34, rotateX: -35 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ delay: .22, duration: .7 }}>Things we</motion.span><br />
+                <motion.span className="portfolio-hero__reveal-line gradient-text" initial={{ opacity: 0, y: 34, rotateX: -35 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ delay: .38, duration: .7 }}>have built</motion.span>
+              </motion.h1>
               <p className="body-lg portfolio-hero__sub">
                 A small selection of real products and digital experiences created for education, learning, and growing organizations.
               </p>
@@ -86,8 +86,8 @@ export default function Portfolio() {
                   <div className="portfolio-card__top"><span>{project.number}</span><span>{project.type}</span></div>
                   <div className="portfolio-card__visual" aria-hidden="true"><div className="portfolio-card__mark">{project.title.charAt(0)}</div><div className="portfolio-card__rule" /></div>
                   <div className="portfolio-card__content">
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
+                    <motion.h2 initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .12, duration: .55 }}>{project.title}</motion.h2>
+                    <motion.p initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .2, duration: .55 }}>{project.description}</motion.p>
                     <div className="portfolio-card__work"><span>SEDECIA did</span>{project.work}</div>
                     <div className="portfolio-card__status">{project.status}</div>
                   </div>
