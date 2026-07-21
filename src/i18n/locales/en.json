@@ -29,8 +29,8 @@
   },
   "services": {
     "badge": "What We Do",
-    "title": "Our Core Services",
-    "subtitle": "From AI automation to enterprise digital transformation — we deliver end-to-end technology solutions.",
+    "title": "What we build",
+    "subtitle": "Websites, interfaces, and custom software for organizations that want to communicate clearly and work better.",
     "items": {
       "ai": { "title": "AI Automation", "desc": "Intelligent automation that learns, adapts, and scales with your business operations." },
       "chatbot": { "title": "AI Chatbots", "desc": "Conversational AI systems that engage customers 24/7 with human-like precision." },
