@@ -1,53 +1,45 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
-import { useTranslation } from 'react-i18next';
 import './StatsSection.css';
 
 const STATS = [
-  { value: 20, suffix: '+', label: 'nav.home', key: 'solutions', icon: '🚀', desc: 'Solutions Delivered' },
+  { value: 3, suffix: '', label: 'Selected projects', note: 'Websites, learning products, and school software' },
+  { value: 4, suffix: '', label: 'Focused capabilities', note: 'Web, design, software, and UI/UX' },
+  { value: 5, suffix: '', label: 'Organization types', note: 'Schools, universities, hotels, guides, and gyms' },
 ];
 
-export default function StatsSection() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+function StatCard({ stat, index, inView }) {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], [index % 2 ? 20 : -12, index % 2 ? -20 : 12]);
+  return (
+    <motion.article ref={ref} className="stats__card" style={{ y }} initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ delay: index * .15, duration: .6 }}>
+      <div className="stats__card-number">
+        {inView && <CountUp start={0} end={stat.value} duration={1.8} delay={index * .12} />}
+        <span className="stats__suffix">{stat.suffix}</span>
+      </div>
+      <div className="stats__card-copy">
+        <h3>{stat.label}</h3>
+        <p>{stat.note}</p>
+      </div>
+      <div className="stats__bar"><motion.div className="stats__bar-fill" initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}} transition={{ delay: .45 + index * .12, duration: 1 }} /></div>
+    </motion.article>
+  );
+}
 
+export default function StatsSection() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: .25 });
   return (
     <section className="stats section" ref={ref}>
       <div className="container">
+        <div className="stats__intro">
+          <span className="badge badge-orange">A focused studio</span>
+          <p>Small enough to care about the details. Focused enough to build the right thing.</p>
+        </div>
         <div className="stats__grid">
-          {STATS.map((stat, i) => (
-            <motion.div
-              key={stat.key}
-              className="stats__card"
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <div className="stats__icon">{stat.icon}</div>
-              <div className="stats__number">
-                {inView && (
-                  <CountUp
-                    start={0}
-                    end={stat.value}
-                    duration={2.5}
-                    decimals={stat.decimals || 0}
-                    delay={i * 0.1}
-                  />
-                )}
-                <span className="stats__suffix">{stat.suffix}</span>
-              </div>
-              <div className="stats__label">{stat.desc}</div>
-              <div className="stats__bar">
-                <motion.div
-                  className="stats__bar-fill"
-                  initial={{ scaleX: 0 }}
-                  animate={inView ? { scaleX: 1 } : {}}
-                  transition={{ delay: 0.5 + i * 0.1, duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
-                />
-              </div>
-            </motion.div>
-          ))}
+          {STATS.map((stat, index) => <StatCard key={stat.label} stat={stat} index={index} inView={inView} />)}
         </div>
       </div>
     </section>
