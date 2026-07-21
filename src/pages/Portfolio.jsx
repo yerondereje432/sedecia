@@ -2,35 +2,101 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import CTASection from '@components/sections/CTASection';
+import HolographicWall from '@components/ui/HolographicWall';
+import './Portfolio.css';
+
+const PROJECTS = [
+  {
+    number: '01',
+    type: 'Education platform',
+    title: 'HUSSS Website',
+    description: 'A public-facing school website and editable content platform for Haramaya University Special Non-Boarding Secondary School.',
+    work: 'Website design · Public pages · Admin content system · Multilingual-ready structure',
+    status: 'Built for HUSSS',
+    accent: 'orange',
+  },
+  {
+    number: '02',
+    type: 'AI learning product',
+    title: 'GROOT',
+    description: 'A curriculum-locked AI tutor for Ethiopian high-school students. GROOT grounds answers in grade and subject-specific textbook content.',
+    work: 'Product interface · AI chat experience · Curriculum-aware learning flow · RAG vertical slice',
+    status: 'MVP vertical slice',
+    accent: 'navy',
+  },
+  {
+    number: '03',
+    type: 'School management',
+    title: 'Sunday School Portal',
+    description: 'A practical school operations portal supporting lessons, assignments, attendance, grading, and student progress.',
+    work: 'Portal interface · Student views · Admin workflows · Learning management features',
+    status: 'Built for school operations',
+    accent: 'orange',
+  },
+];
+
+const reveal = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (index = 0) => ({ opacity: 1, y: 0, transition: { delay: index * 0.12, duration: 0.65, ease: [0.16, 1, 0.3, 1] } }),
+};
 
 export default function Portfolio() {
   return (
     <>
       <Helmet>
-  <title>Portfolio — SEDECIA | AI & Software Projects in Ethiopia</title>
-  <meta name="description" content="Explore SEDECIA's portfolio of delivered AI automation, web development, chatbot, and custom software projects for clients across Ethiopia." />
-  <meta name="keywords" content="SEDECIA portfolio, AI projects Ethiopia, software portfolio Africa, web development projects Ethiopia" />
-  <meta property="og:title" content="Portfolio — SEDECIA | AI & Software Projects" />
-  <meta property="og:description" content="See the real-world AI and software solutions SEDECIA has delivered across Ethiopia." />
-  <meta property="og:type" content="website" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sedecia.com/portfolio" />
-  <link rel="canonical" href="https://sedecia.com/portfolio" />
-</Helmet>
-      <section style={{ paddingTop:'calc(var(--section-padding) + 80px)', background:'var(--white)', textAlign:'center', paddingBottom:'var(--section-padding)', minHeight:'60vh' }}>
-        <div className="container">
-          <motion.div initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} transition={{ duration:0.6 }}>
-            <span className="badge badge-orange">Portfolio</span>
-            <h1 className="display-xl" style={{ color:'var(--navy)', marginBlock:'1rem' }}>
-              Portfolio <span className="gradient-text">Coming Soon</span>
-            </h1>
-            <p className="body-lg" style={{ maxWidth:'540px', marginInline:'auto', marginBottom:'2rem' }}>
-              We're building this page with full content. In the meantime, explore our other sections or get in touch.
-            </p>
-            <a href="/contact" className="btn btn-primary btn-lg">Contact Us →</a>
-          </motion.div>
-        </div>
-      </section>
+        <title>Portfolio — SEDECIA Technologies</title>
+        <meta name="description" content="Explore selected websites, learning products, and school software built by SEDECIA Technologies." />
+        <meta property="og:title" content="Portfolio — SEDECIA Technologies" />
+        <meta property="og:description" content="Selected digital products and software experiences built by SEDECIA Technologies." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sedecia.com/portfolio" />
+        <link rel="canonical" href="https://sedecia.com/portfolio" />
+      </Helmet>
+
+      <main className="portfolio-page">
+        <section className="portfolio-hero section">
+          <div className="portfolio-hero__glow" aria-hidden="true" />
+          <div className="container portfolio-hero__layout">
+            <motion.div initial="hidden" animate="visible" variants={reveal}>
+              <span className="badge badge-orange">Selected work</span>
+              <h1 className="display-xl portfolio-hero__title">
+                <span>Things we</span><br />
+                <span className="gradient-text">have built</span>
+              </h1>
+              <p className="body-lg portfolio-hero__sub">
+                A small selection of real products and digital experiences created for education, learning, and growing organizations.
+              </p>
+            </motion.div>
+            <motion.div className="portfolio-hero__visual" initial={{ opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: .8 }}>
+              <HolographicWall intensity={0.6} radius={150} />
+              <span className="portfolio-hero__visual-label">From idea to interface</span>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="portfolio-list section">
+          <div className="container">
+            <div className="portfolio-list__intro">
+              <span className="section-label">03 / Work</span>
+              <p>Focused work, built with care.</p>
+            </div>
+            <div className="portfolio-grid">
+              {PROJECTS.map((project, index) => (
+                <motion.article key={project.title} className={`portfolio-card portfolio-card--${project.accent}`} custom={index} initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={reveal}>
+                  <div className="portfolio-card__top"><span>{project.number}</span><span>{project.type}</span></div>
+                  <div className="portfolio-card__visual" aria-hidden="true"><div className="portfolio-card__mark">{project.title.charAt(0)}</div><div className="portfolio-card__rule" /></div>
+                  <div className="portfolio-card__content">
+                    <h2>{project.title}</h2>
+                    <p>{project.description}</p>
+                    <div className="portfolio-card__work"><span>SEDECIA did</span>{project.work}</div>
+                    <div className="portfolio-card__status">{project.status}</div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
       <CTASection />
     </>
   );
