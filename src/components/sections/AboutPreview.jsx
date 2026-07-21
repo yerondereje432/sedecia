@@ -24,6 +24,7 @@ function AboutObject() {
   const rotateY = useSpring(useTransform(pointerX, [-1, 1], [-12, 12]), { stiffness: 180, damping: 22 });
   const moveX = useSpring(useTransform(pointerX, [-1, 1], [-12, 12]), { stiffness: 160, damping: 25 });
   const moveY = useSpring(useTransform(pointerY, [-1, 1], [-10, 10]), { stiffness: 160, damping: 25 });
+  const scrollScale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 1.35]), { stiffness: 115, damping: 24, mass: 0.8 });
   const handleMove = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
     pointerX.set(((event.clientX - rect.left) / rect.width) * 2 - 1);
@@ -33,7 +34,7 @@ function AboutObject() {
   const handleLeave = () => { pointerX.set(0); pointerY.set(0); setActive(false); };
   return (
     <div className={`about-preview__stage ${active ? 'is-active' : ''}`} onMouseMove={handleMove} onMouseLeave={handleLeave}>
-      <motion.div ref={ref} className="about-preview__object" style={{ rotate: scrollRotate, y: scrollY, rotateX, rotateY, x: moveX }}>
+      <motion.div ref={ref} className="about-preview__object" style={{ rotate: scrollRotate, y: scrollY, scale: scrollScale, rotateX, rotateY, x: moveX }}>
         <div className="about-preview__object-aura" />
         <motion.div className="about-preview__object-core" animate={{ y: [0, -10, 0], rotateZ: [-4, 3, -4] }} transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}><span>SD</span></motion.div>
         <motion.div className="about-preview__object-plane about-preview__object-plane--one" animate={{ rotateZ: [-12, -8, -12] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }} />
