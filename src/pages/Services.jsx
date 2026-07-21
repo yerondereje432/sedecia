@@ -31,7 +31,10 @@ export default function Services() {
           <div className="container">
             <motion.div initial="hidden" animate="visible" variants={reveal}>
               <span className="badge badge-orange">What we do</span>
-              <h1 className="display-xl services-page__title"><span>Focused tools</span><br /><span className="gradient-text">for real work</span></h1>
+              <motion.h1 className="display-xl services-page__title">
+                <motion.span className="services-page__reveal-line" initial={{ opacity: 0, y: 34, rotateX: -35 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ delay: .22, duration: .7 }}>Focused tools</motion.span><br />
+                <motion.span className="services-page__reveal-line gradient-text" initial={{ opacity: 0, y: 34, rotateX: -35 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ delay: .38, duration: .7 }}>for real work</motion.span>
+              </motion.h1>
               <p className="body-lg services-page__intro">SEDECIA builds websites, interfaces, and custom software for organizations that want to communicate clearly and work better.</p>
             </motion.div>
           </div>
@@ -43,8 +46,8 @@ export default function Services() {
               {SERVICES.map((service, index) => (
                 <motion.article key={service.title} className="services-page__card" custom={index} initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={reveal}>
                   <div className="services-page__card-top"><span>{service.number}</span><span>SEDECIA</span></div>
-                  <h2>{service.title}</h2>
-                  <p>{service.desc}</p>
+                  <motion.h2 initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .12, duration: .55 }}>{service.title}</motion.h2>
+                  <motion.p initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .2, duration: .55 }}>{service.desc}</motion.p>
                   <ul>{service.features.map(feature => <li key={feature}><span>+</span>{feature}</li>)}</ul>
                   <Link to="/contact" className="services-page__link">Discuss this work <span>↗</span></Link>
                 </motion.article>
