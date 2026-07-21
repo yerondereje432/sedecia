@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +16,23 @@ const cardVariants = {
   hidden: { opacity: 0, y: 45, rotateX: 8 },
   visible: (index = 0) => ({ opacity: 1, y: 0, rotateX: 0, transition: { delay: index * .1, duration: .7, ease: [.16, 1, .3, 1] } }),
 };
+
+function ParallaxServiceCard({ service, index, variants }) {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [index % 2 ? 28 : -18, index % 2 ? -28 : 18]);
+
+  return (
+    <motion.article ref={ref} className="service-card" custom={index} variants={variants} style={{ y: parallaxY }} whileHover={{ rotateY: index % 2 ? -2 : 2 }}>
+      <div className="service-card__top"><span>{service.number}</span><span className="service-card__icon">{service.icon}</span></div>
+      <div className="service-card__body">
+        <h3>{service.title}</h3>
+        <p>{service.desc}</p>
+      </div>
+      <Link to="/contact" className="service-card__link" aria-label={`Discuss ${service.title}`}>Discuss this work <span>↗</span></Link>
+    </motion.article>
+  );
+}
 
 export default function ServicesSection() {
   const { t } = useTranslation();
@@ -34,14 +51,7 @@ export default function ServicesSection() {
 
           <motion.div className="services-section__grid" initial="hidden" animate={inView ? 'visible' : 'hidden'}>
             {SERVICES.map((service, index) => (
-              <motion.article key={service.title} className="service-card" custom={index} variants={cardVariants} whileHover={{ y: -8, rotateY: index % 2 ? -2 : 2 }}>
-                <div className="service-card__top"><span>{service.number}</span><span className="service-card__icon">{service.icon}</span></div>
-                <div className="service-card__body">
-                  <h3>{service.title}</h3>
-                  <p>{service.desc}</p>
-                </div>
-                <Link to="/contact" className="service-card__link" aria-label={`Discuss ${service.title}`}>Discuss this work <span>↗</span></Link>
-              </motion.article>
+              <ParallaxServiceCard key={service.title} service={service} index={index} variants={cardVariants} />
             ))}
           </motion.div>
         </div>
