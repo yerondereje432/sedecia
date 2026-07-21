@@ -1,0 +1,4 @@
+.ethereal-shadow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.ethereal-shadow__filter { position: absolute; width: 0; height: 0; }
+.ethereal-shadow__wash { position: absolute; width: 75%; height: 85%; right: -12%; top: -16%; opacity: .9; border-radius: 44% 56% 64% 36% / 48% 38% 62% 52%; background: radial-gradient(circle at 35% 40%, rgba(244,121,32,.42), transparent 62%); }
+.ethereal-shadow__noise { position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; }
