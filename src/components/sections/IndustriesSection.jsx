@@ -14,7 +14,7 @@ const AUDIENCES = [
 function AudienceRow({ item, index, inView }) {
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const x = useTransform(scrollYProgress, [0, 1], [index % 2 ? 18 : -12, index % 2 ? -18 : 12]);
+  const x = useTransform(scrollYProgress, [0, 1], [index % 2 ? 8 : -6, index % 2 ? -8 : 6]);
   return (
     <motion.article ref={ref} className="industries__row" style={{ x }} initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: index * .1, duration: .6, ease: [.16, 1, .3, 1] }}>
       <span className="industries__number">{item.number}</span>
