@@ -6,15 +6,10 @@ import { useTranslation } from 'react-i18next';
 import './ServicesSection.css';
 
 const SERVICES = [
-  { key: 'ai',         icon: '🤖', color: '#F47920', title: 'AI Automation',         desc: 'Intelligent automation that learns, adapts, and scales with your operations.' },
-  { key: 'chatbot',    icon: '💬', color: '#1B2A4A', title: 'AI Chatbots',           desc: 'Conversational AI that engages customers 24/7 with human-like precision.' },
-  { key: 'software',   icon: '⚙️', color: '#F47920', title: 'Custom Software',       desc: 'Bespoke software engineered to solve your unique business challenges.' },
-  { key: 'web',        icon: '🌐', color: '#1B2A4A', title: 'Web Development',       desc: 'Premium, high-performance web platforms for the modern digital era.' },
-  { key: 'mobile',     icon: '📱', color: '#F47920', title: 'Mobile App Development', desc: 'Native and cross-platform mobile experiences that users love.' },
-  { key: 'cyber',      icon: '🔐', color: '#1B2A4A', title: 'Cybersecurity',         desc: 'Enterprise-grade protection that shields your digital assets 24/7.' },
-  { key: 'data',       icon: '📊', color: '#F47920', title: 'Data Analytics',        desc: 'Transform raw data into strategic insights for smarter decisions.' },
-  { key: 'enterprise', icon: '🏢', color: '#1B2A4A', title: 'Enterprise AI',         desc: 'Full-scale AI integration for large organizations and complex workflows.' },
-  { key: 'consulting', icon: '🎯', color: '#F47920', title: 'IT Consulting',         desc: 'Strategic technology advisory to align your IT roadmap with business goals.' },
+  { key: 'web-development', icon: '🌐', color: '#1B2A4A', title: 'Web Development', desc: 'Fast, reliable websites and web platforms built around the way your organization works.' },
+  { key: 'web-design', icon: '✦', color: '#F47920', title: 'Web Design', desc: 'Clear, distinctive digital experiences that make your organization easier to understand and trust.' },
+  { key: 'software', icon: '⚙️', color: '#1B2A4A', title: 'Custom Software', desc: 'Practical software for specific workflows—built from the real problem rather than from a template.' },
+  { key: 'ui-ux', icon: '◈', color: '#F47920', title: 'UI/UX Design', desc: 'Thoughtful interfaces that help people complete important tasks with less friction.' },
 ];
 
 const containerVariants = {
