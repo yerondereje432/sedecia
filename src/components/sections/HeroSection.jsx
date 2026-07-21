@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import './HeroSection.css';
+import EtherealShadow from '@components/ui/EtherealShadow';
 
 const FLOATING_TAGS = [
   { label: 'AI Automation', x: '8%',  y: '20%', delay: 0 },
@@ -92,6 +93,14 @@ export default function HeroSection() {
 
   return (
     <section className="hero" aria-label="Hero">
+      {/* Ambient ethereal layer */}
+      <EtherealShadow
+        className="hero__ethereal"
+        color="rgba(244, 121, 32, 0.2)"
+        animation={{ scale: 42, speed: 50 }}
+        noise={{ opacity: 0.12, scale: 1 }}
+      />
+
       {/* Particle Canvas */}
       <canvas ref={canvasRef} className="hero__canvas" aria-hidden="true" />
 
