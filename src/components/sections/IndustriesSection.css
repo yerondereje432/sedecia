@@ -9,3 +9,9 @@
 .industries__card-desc { font-size: 0.85rem; color: var(--text-gray); line-height: 1.6; }
 @media (max-width: 1024px) { .industries__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .industries__grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; } .industries__card { padding: 1.25rem 1rem; } }
+
+.industries__title { font-family: var(--font-display); font-weight: 600; letter-spacing: -.055em; }
+.industries__card { border-radius: 4px 24px 4px 24px; }
+.industries__card:nth-child(even) { transform: translateY(14px); }
+.industries__card:nth-child(even):hover { transform: translateY(5px); }
+@media (max-width:1024px) { .industries__card:nth-child(even) { transform:none; } }
