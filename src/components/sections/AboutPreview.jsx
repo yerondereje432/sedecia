@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
 import './AboutPreview.css';
@@ -14,19 +14,36 @@ const VALUES = [
 
 function AboutObject() {
   const ref = React.useRef(null);
+  const [active, setActive] = React.useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const rotate = useTransform(scrollYProgress, [0, 1], [-8, 8]);
-  const y = useTransform(scrollYProgress, [0, 1], [28, -28]);
+  const scrollRotate = useTransform(scrollYProgress, [0, 1], [-8, 8]);
+  const scrollY = useTransform(scrollYProgress, [0, 1], [28, -28]);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(pointerY, [-1, 1], [9, -9]), { stiffness: 180, damping: 22 });
+  const rotateY = useSpring(useTransform(pointerX, [-1, 1], [-12, 12]), { stiffness: 180, damping: 22 });
+  const moveX = useSpring(useTransform(pointerX, [-1, 1], [-12, 12]), { stiffness: 160, damping: 25 });
+  const moveY = useSpring(useTransform(pointerY, [-1, 1], [-10, 10]), { stiffness: 160, damping: 25 });
+  const handleMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    pointerX.set(((event.clientX - rect.left) / rect.width) * 2 - 1);
+    pointerY.set(((event.clientY - rect.top) / rect.height) * 2 - 1);
+    setActive(true);
+  };
+  const handleLeave = () => { pointerX.set(0); pointerY.set(0); setActive(false); };
   return (
-    <motion.div ref={ref} className="about-preview__object" style={{ rotate, y }}>
-      <div className="about-preview__object-core"><span>SD</span></div>
-      <div className="about-preview__object-plane about-preview__object-plane--one" />
-      <div className="about-preview__object-plane about-preview__object-plane--two" />
-      <div className="about-preview__object-line about-preview__object-line--one" />
-      <div className="about-preview__object-line about-preview__object-line--two" />
-      <div className="about-preview__object-tag about-preview__object-tag--one"><span>03</span> selected projects</div>
-      <div className="about-preview__object-tag about-preview__object-tag--two"><span>ET</span> built in Ethiopia</div>
-    </motion.div>
+    <div className={`about-preview__stage ${active ? 'is-active' : ''}`} onMouseMove={handleMove} onMouseLeave={handleLeave}>
+      <motion.div ref={ref} className="about-preview__object" style={{ rotate: scrollRotate, y: scrollY, rotateX, rotateY, x: moveX }}>
+        <div className="about-preview__object-aura" />
+        <motion.div className="about-preview__object-core" animate={{ y: [0, -10, 0], rotateZ: [-4, 3, -4] }} transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}><span>SD</span></motion.div>
+        <motion.div className="about-preview__object-plane about-preview__object-plane--one" animate={{ rotateZ: [-12, -8, -12] }} transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }} />
+        <motion.div className="about-preview__object-plane about-preview__object-plane--two" animate={{ rotateZ: [24, 30, 24] }} transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }} />
+        <div className="about-preview__object-line about-preview__object-line--one" />
+        <div className="about-preview__object-line about-preview__object-line--two" />
+        <div className="about-preview__object-tag about-preview__object-tag--one"><span>03</span> selected projects</div>
+        <div className="about-preview__object-tag about-preview__object-tag--two"><span>ET</span> built in Ethiopia</div>
+      </motion.div>
+    </div>
   );
 }
 
