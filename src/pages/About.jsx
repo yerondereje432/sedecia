@@ -32,11 +32,16 @@ function StoryObject() {
 export default function About() {
   const [heroRef, heroIn] = useInView({ triggerOnce: true, threshold: .1 });
   const [valuesRef, valuesIn] = useInView({ triggerOnce: true, threshold: .12 });
-  const [timelineRef, timelineIn] = useInView({ triggerOnce: true, threshold: .12 });
-  const { scrollYProgress: timelineProgress } = useScroll({ target: timelineRef, offset: ['start end', 'end start'] });
-  const timelineRotate = useSpring(useTransform(timelineProgress, [0, 1], [7, -7]), { stiffness: 100, damping: 24 });
-  const timelineScale = useSpring(useTransform(timelineProgress, [0, .5, 1], [.88, 1, .94]), { stiffness: 95, damping: 24 });
-  const timelineY = useSpring(useTransform(timelineProgress, [0, 1], [45, -35]), { stiffness: 100, damping: 25 });
+  const [timelineInViewRef, timelineIn] = useInView({ triggerOnce: true, threshold: .12 });
+  const timelineScrollRef = React.useRef(null);
+  const { scrollYProgress: timelineProgress } = useScroll({ target: timelineScrollRef, offset: ['start end', 'end start'] });
+  const timelineRotate = useSpring(useTransform(timelineProgress, [0, 1], [14, -14]), { stiffness: 120, damping: 25 });
+  const timelineScale = useSpring(useTransform(timelineProgress, [0, .5, 1], [.78, 1.08, .92]), { stiffness: 110, damping: 25 });
+  const timelineY = useSpring(useTransform(timelineProgress, [0, 1], [90, -70]), { stiffness: 120, damping: 25 });
+  const setTimelineRefs = (node) => {
+    timelineScrollRef.current = node;
+    timelineInViewRef(node);
+  };
   return (
     <>
       <Helmet>
@@ -76,7 +81,7 @@ export default function About() {
           </div>
         </section>
 
-        <section className="about-page__timeline section" ref={timelineRef}>
+        <section className="about-page__timeline section" ref={setTimelineRefs}>
           <div className="container"><div className="about-page__section-intro about-page__section-intro--light"><span className="section-label">03 / The journey</span><h2>Still early.<br /><span>Already building.</span></h2></div><motion.div className="about-page__timeline-list" style={{ rotateX: timelineRotate, scale: timelineScale, y: timelineY }}>{MILESTONES.map((milestone, index) => <motion.article key={milestone.year} className="about-page__timeline-item" initial={{ opacity: 0, x: index % 2 ? 30 : -30 }} animate={timelineIn ? { opacity: 1, x: 0 } : {}} transition={{ delay: index * .12, duration: .6 }}><span className="about-page__timeline-year">{milestone.year}</span><span className="about-page__timeline-dot" /><div><h3>{milestone.title}</h3><p>{milestone.desc}</p></div></motion.article>)}</motion.div></div>
         </section>
 
