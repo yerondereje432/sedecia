@@ -95,13 +95,13 @@ export default function Contact() {
         <div className="container" style={{ textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="badge badge-orange">{t('contact.badge')}</span>
-            <h1 className="display-xl" style={{ color: 'var(--navy)', marginBlock: '1rem' }}>
-              {t('contact.title')}{' '}
-              <span className="gradient-text">{t('contact.titleAccent')}</span>
-            </h1>
-            <p className="body-lg" style={{ maxWidth: '540px', marginInline: 'auto' }}>
-              {t('contact.subtitle')}
-            </p>
+            <motion.h1 className="display-xl contact-hero__title" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .12, duration: .7 }}>
+              Let&apos;s talk about<br />
+              <span className="gradient-text">what you&apos;re building.</span>
+            </motion.h1>
+            <motion.p className="body-lg contact-hero__subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .25, duration: .65 }}>
+              Contact SEDECIA Technologies when you need a website, a clearer interface, or custom software shaped around your organization.
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -118,10 +118,10 @@ export default function Contact() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="contact-info-panel__title">Let's Start a Conversation</h2>
+              <span className="contact-info-panel__eyebrow">Your next step</span>
+              <h2 className="contact-info-panel__title">Tell SEDECIA what you need.</h2>
               <p className="contact-info-panel__sub">
-                Whether you have a project idea, a technical challenge, or just want to explore
-                what AI can do for you — we're here.
+                Share the idea, challenge, or existing product you want to improve. We&apos;ll read it carefully and respond with a useful next step.
               </p>
 
               <div className="contact-info-panel__items">
@@ -170,8 +170,8 @@ export default function Contact() {
             >
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className="contact-form__header">
-                  <h3 className="contact-form__title">Send Us a Message</h3>
-                  <p className="contact-form__sub">Free consultation · No commitment required</p>
+                  <h3 className="contact-form__title">Start with the brief.</h3>
+                  <p className="contact-form__sub">Tell us what you are trying to make, improve, or clarify.</p>
                 </div>
 
                 <div className="contact-form__row">
