@@ -35,3 +35,11 @@
 .about-page__founder { background:#f3f5f7; } .about-page__founder-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:end; } .about-page__founder-layout > div:last-child p { max-width:520px; color:var(--text-gray); line-height:1.8; margin-bottom:1.8rem; }
 @media (max-width:900px) { .about-page__hero-layout,.about-page__founder-layout { grid-template-columns:1fr; gap:2.5rem; } .about-page__hero-visual { min-height:360px; } .about-page__section-intro--split { display:block; } .about-page__section-intro--split p { margin-top:1.5rem; } .about-page__values-grid { grid-template-columns:1fr 1fr; } }
 @media (max-width:600px) { .about-page__story-object { transform:scale(.78); } .about-page__mission-grid,.about-page__values-grid { grid-template-columns:1fr; } .about-page__timeline-list::before { left:64px; } .about-page__timeline-item { grid-template-columns:48px 32px 1fr; gap:.6rem; } .about-page__timeline-item p { font-size:.82rem; } }
+
+.about-page__founder-layout { align-items:center; }
+.about-page__founder-portrait { position:relative; width:min(100%, 360px); aspect-ratio:4/5; overflow:hidden; border-radius:4px 42px 4px 42px; background:var(--navy); box-shadow:18px 18px 0 var(--orange); }
+.about-page__founder-portrait::after { content:''; position:absolute; inset:0; background:linear-gradient(145deg, transparent 55%, rgba(27,42,74,.3)); pointer-events:none; }
+.about-page__founder-portrait img { width:100%; height:100%; object-fit:cover; object-position:center top; filter:saturate(.92) contrast(1.02); }
+.about-page__founder-copy { max-width:560px; }
+.about-page__founder-copy p { max-width:520px; margin:1.5rem 0 1.8rem; color:var(--text-gray); line-height:1.8; }
+@media (max-width:900px) { .about-page__founder-portrait { margin-inline:auto; } }
