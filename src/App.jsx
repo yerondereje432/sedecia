@@ -15,9 +15,7 @@ const About      = lazy(() => import('@pages/About'));
 const Services   = lazy(() => import('@pages/Services'));
 const Industries = lazy(() => import('@pages/Industries'));
 const Portfolio  = lazy(() => import('@pages/Portfolio'));
-const Blog       = lazy(() => import('@pages/Blog'));
 const Contact    = lazy(() => import('@pages/Contact'));
-const Careers    = lazy(() => import('@pages/Careers'));
 const FAQ        = lazy(() => import('@pages/FAQ'));
 const NotFound   = lazy(() => import('@pages/NotFound'));
 
