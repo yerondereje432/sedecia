@@ -189,8 +189,15 @@ export default function Contact() {
             >
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className="contact-form__header">
+                  <span className="contact-form__eyebrow">Make an inquiry</span>
                   <h3 className="contact-form__title">Start with the brief.</h3>
-                  <p className="contact-form__sub">A few useful details help us understand where to begin.</p>
+                  <p className="contact-form__sub">Choose the kind of help you need, then give us enough context to understand where to begin.</p>
+                </div>
+
+                <div className="contact-form__inquiry-types" aria-label="Inquiry type">
+                  {SERVICES_LIST.map((service) => (
+                    <button key={service} type="button" className={`contact-form__inquiry-chip ${form.service === service ? 'active' : ''}`} onClick={() => setForm((current) => ({ ...current, service }))}>{service}</button>
+                  ))}
                 </div>
 
                 <div className="contact-form__row">
