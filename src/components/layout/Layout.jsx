@@ -8,6 +8,7 @@ export default function Layout({ children }) {
   // Smooth scroll with Lenis (graceful degradation if not loaded)
   useEffect(() => {
     let lenis;
+    let active = true;
     import('lenis').then(({ default: Lenis }) => {
       lenis = new Lenis({
         duration: 1.2,
@@ -15,13 +16,14 @@ export default function Layout({ children }) {
         smooth: true,
       });
       function raf(time) {
+        if (!active) return;
         lenis.raf(time);
         requestAnimationFrame(raf);
       }
       requestAnimationFrame(raf);
     }).catch(() => {});
 
-    return () => { if (lenis) lenis.destroy(); };
+    return () => { active = false; if (lenis) lenis.destroy(); };
   }, []);
 
   return (
