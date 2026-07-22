@@ -46,7 +46,11 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="navbar__logo" aria-label="SEDECIA Home">
           <div className="navbar__logo-icon">
-            <img src="/sedecia-logo.png" alt="SEDECIA Logo" style={{ height: '48px', width: 'auto', display: 'block' }} />
+            <img src="/sedecia-icon.png" alt="SEDECIA icon" />
+          </div>
+          <div className="navbar__logo-text">
+            <span className="navbar__logo-name">SEDECIA</span>
+            <span className="navbar__logo-sub">Technologies</span>
           </div>
         </Link>
 
@@ -127,3 +131,4 @@ export default function Navbar() {
     </header>
   );
 }
+
