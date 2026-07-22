@@ -16,21 +16,17 @@ export default function Navbar() {
   const { t } = useTranslation();
   const location = useLocation();
   const [scrolled, setScrolled]       = useState(false);
-  const [hidden, setHidden]           = useState(false);
   const [progress, setProgress]       = useState(0);
   const [mobileOpen, setMobileOpen]   = useState(false);
   const [hoveredPath, setHoveredPath] = useState(null);
 
   // Scroll detection
   useEffect(() => {
-    let previousY = window.scrollY;
     const onScroll = () => {
       const currentY = window.scrollY;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setScrolled(currentY > 20);
-      setHidden(currentY > previousY && currentY > 140 && !mobileOpen);
       setProgress(max > 0 ? currentY / max : 0);
-      previousY = currentY;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -40,7 +36,7 @@ export default function Navbar() {
   useEffect(() => { setMobileOpen(false); }, [location]);
 
   return (
-    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${hidden ? 'navbar--hidden' : ''}`}>
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
       <div className="navbar__inner container">
         {/* Logo */}
@@ -131,4 +127,3 @@ export default function Navbar() {
     </header>
   );
 }
-
