@@ -29,7 +29,7 @@ const PROJECTS = [
   },
   {
     number: '03',
-    type: 'School management',
+    type: 'Learning Managment System',
     title: 'Sunday School Portal',
     description: 'A practical school operations portal supporting lessons, assignments, attendance, grading, and student progress.',
     work: 'Portal interface · Student views · Admin workflows · Learning management features',
