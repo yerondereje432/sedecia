@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import CTASection from '@components/sections/CTASection';
+import HolographicWall from '@components/ui/HolographicWall';
 import './Portfolio.css';
 
 const PROJECTS = [
@@ -29,7 +30,7 @@ const PROJECTS = [
   },
   {
     number: '03',
-    type: 'Learning Managment System',
+    type: 'School management',
     title: 'Sunday School Portal',
     description: 'A practical school operations portal supporting lessons, assignments, attendance, grading, and student progress.',
     work: 'Portal interface · Student views · Admin workflows · Learning management features',
@@ -73,7 +74,7 @@ export default function Portfolio() {
               </p>
             </motion.div>
             <motion.div className="portfolio-hero__visual" initial={{ opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: .8 }}>
-              <div className="portfolio-hero__pattern" aria-hidden="true"><span>◇</span><span>✦</span><span>△</span><span>◌</span><span>╳</span><span>＋</span></div>
+              <HolographicWall intensity={0.75} radius={180} />
               <span className="portfolio-hero__visual-label">From idea to interface</span>
             </motion.div>
           </div>
