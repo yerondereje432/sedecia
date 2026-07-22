@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { key: 'services',   path: '/services' } ,
   { key: 'industries', path: '/industries' },
   { key: 'portfolio',  path: '/portfolio' },
-  { key: 'blog',       path: '/blog' },
   { key: 'contact',    path: '/contact' },
 ];
 
