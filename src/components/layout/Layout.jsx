@@ -1,10 +1,17 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ChatbotWidget from '@components/ui/ChatbotWidget';
 import ScrollToTop from '@components/ui/ScrollToTop';
 
 export default function Layout({ children }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [location.pathname]);
+
   // Smooth scroll with Lenis (graceful degradation if not loaded)
   useEffect(() => {
     let lenis;
