@@ -43,3 +43,7 @@
 .about-page__founder-copy { max-width:560px; }
 .about-page__founder-copy p { max-width:520px; margin:1.5rem 0 1.8rem; color:var(--text-gray); line-height:1.8; }
 @media (max-width:900px) { .about-page__founder-portrait { margin-inline:auto; } }
+
+.about-page__timeline { perspective: 1200px; }
+.about-page__timeline-list { transform-style: preserve-3d; transform-origin: center center; will-change: transform; }
+.about-page__timeline-item { transform-style: preserve-3d; }
