@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import CTASection from '@components/sections/CTASection';
@@ -33,6 +33,10 @@ export default function About() {
   const [heroRef, heroIn] = useInView({ triggerOnce: true, threshold: .1 });
   const [valuesRef, valuesIn] = useInView({ triggerOnce: true, threshold: .12 });
   const [timelineRef, timelineIn] = useInView({ triggerOnce: true, threshold: .12 });
+  const { scrollYProgress: timelineProgress } = useScroll({ target: timelineRef, offset: ['start end', 'end start'] });
+  const timelineRotate = useSpring(useTransform(timelineProgress, [0, 1], [7, -7]), { stiffness: 100, damping: 24 });
+  const timelineScale = useSpring(useTransform(timelineProgress, [0, .5, 1], [.88, 1, .94]), { stiffness: 95, damping: 24 });
+  const timelineY = useSpring(useTransform(timelineProgress, [0, 1], [45, -35]), { stiffness: 100, damping: 25 });
   return (
     <>
       <Helmet>
@@ -73,7 +77,7 @@ export default function About() {
         </section>
 
         <section className="about-page__timeline section" ref={timelineRef}>
-          <div className="container"><div className="about-page__section-intro about-page__section-intro--light"><span className="section-label">03 / The journey</span><h2>Still early.<br /><span>Already building.</span></h2></div><div className="about-page__timeline-list">{MILESTONES.map((milestone, index) => <motion.article key={milestone.year} className="about-page__timeline-item" initial={{ opacity: 0, x: index % 2 ? 30 : -30 }} animate={timelineIn ? { opacity: 1, x: 0 } : {}} transition={{ delay: index * .12, duration: .6 }}><span className="about-page__timeline-year">{milestone.year}</span><span className="about-page__timeline-dot" /><div><h3>{milestone.title}</h3><p>{milestone.desc}</p></div></motion.article>)}</div></div>
+          <div className="container"><div className="about-page__section-intro about-page__section-intro--light"><span className="section-label">03 / The journey</span><h2>Still early.<br /><span>Already building.</span></h2></div><motion.div className="about-page__timeline-list" style={{ rotateX: timelineRotate, scale: timelineScale, y: timelineY }}>{MILESTONES.map((milestone, index) => <motion.article key={milestone.year} className="about-page__timeline-item" initial={{ opacity: 0, x: index % 2 ? 30 : -30 }} animate={timelineIn ? { opacity: 1, x: 0 } : {}} transition={{ delay: index * .12, duration: .6 }}><span className="about-page__timeline-year">{milestone.year}</span><span className="about-page__timeline-dot" /><div><h3>{milestone.title}</h3><p>{milestone.desc}</p></div></motion.article>)}</motion.div></div>
         </section>
 
         <section className="about-page__founder section"><div className="container about-page__founder-layout"><div className="about-page__founder-portrait"><img src="/yeron-dereje.jpg" alt="Yeron Dereje, founder of SEDECIA" /></div><div className="about-page__founder-copy"><span className="section-label">04 / The person behind it</span><h2>Built with care<br /><span className="gradient-text">from Ethiopia.</span></h2><p>SEDECIA was founded by Yeron Dereje, a young technology entrepreneur and developer from Ethiopia. The studio exists to make good digital work more accessible to organizations with important things to communicate and build.</p><Link to="/contact" className="btn btn-primary">Work with SEDECIA <span>↗</span></Link></div></div></section>
