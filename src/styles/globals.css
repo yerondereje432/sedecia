@@ -7,19 +7,19 @@
   /* Brand Colors */
   --orange: #F47920;
   --orange-light: #FF9A45;
-  --orange-dark: #D4611A;
-  --orange-glow: rgba(244, 121, 32, 0.15);
-  --orange-glow-strong: rgba(244, 121, 32, 0.35);
+  --orange-dark: #C85A12;
+  --orange-glow: rgba(244, 121, 32, 0.10);
+  --orange-glow-strong: rgba(244, 121, 32, 0.24);
 
   --navy: #1B2A4A;
-  --navy-light: #243660;
-  --navy-dark: #0F1A2E;
+  --navy-light: #2A3E67;
+  --navy-dark: #0B1426;
 
   --white: #FFFFFF;
-  --off-white: #F8F9FC;
-  --light-gray: #F0F2F7;
-  --mid-gray: #E2E6EF;
-  --text-gray: #6B7A99;
+  --off-white: #F4F6F8;
+  --light-gray: #EEF1F5;
+  --mid-gray: #DCE3EC;
+  --text-gray: #687896;
   --text-dark: #1B2A4A;
 
   /* Typography */
@@ -499,4 +499,20 @@ ul, ol {
 
 @media (min-width: 769px) {
   .hide-desktop { display: none !important; }
+}
+
+/* Accessible motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Updated typography: editorial display + clean, warm body copy */
+:root {
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
 }
