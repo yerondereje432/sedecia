@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import CTASection from '@components/sections/CTASection';
-import HolographicWall from '@components/ui/HolographicWall';
 import './Portfolio.css';
 
 const PROJECTS = [
@@ -12,7 +11,9 @@ const PROJECTS = [
     title: 'HUSSS Website',
     description: 'A public-facing school website and editable content platform for Haramaya University Special Non-Boarding Secondary School.',
     work: 'Website design · Public pages · Admin content system · Multilingual-ready structure',
-    status: 'Built for HUSSS',
+    status: 'Delivered',
+    image: '/portfolio-husss.png',
+    link: 'https://schoolweb-beige-delta.vercel.app/',
     accent: 'orange',
   },
   {
@@ -21,7 +22,9 @@ const PROJECTS = [
     title: 'GROOT',
     description: 'A curriculum-locked AI tutor for Ethiopian high-school students. GROOT grounds answers in grade and subject-specific textbook content.',
     work: 'Product interface · AI chat experience · Curriculum-aware learning flow · RAG vertical slice',
-    status: 'MVP vertical slice',
+    status: 'Under Development',
+    image: '/groot-logo.png',
+    link: null,
     accent: 'navy',
   },
   {
@@ -30,7 +33,9 @@ const PROJECTS = [
     title: 'Sunday School Portal',
     description: 'A practical school operations portal supporting lessons, assignments, attendance, grading, and student progress.',
     work: 'Portal interface · Student views · Admin workflows · Learning management features',
-    status: 'Built for school operations',
+    status: 'Delivered',
+    image: '/portfolio-sunday.png',
+    link: 'https://web-production-71a88.up.railway.app/',
     accent: 'orange',
   },
 ];
@@ -68,7 +73,7 @@ export default function Portfolio() {
               </p>
             </motion.div>
             <motion.div className="portfolio-hero__visual" initial={{ opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25, duration: .8 }}>
-              <HolographicWall intensity={0.6} radius={150} />
+              <div className="portfolio-hero__pattern" aria-hidden="true"><span>◇</span><span>✦</span><span>△</span><span>◌</span><span>╳</span><span>＋</span></div>
               <span className="portfolio-hero__visual-label">From idea to interface</span>
             </motion.div>
           </div>
@@ -84,12 +89,12 @@ export default function Portfolio() {
               {PROJECTS.map((project, index) => (
                 <motion.article key={project.title} className={`portfolio-card portfolio-card--${project.accent}`} custom={index} initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={reveal}>
                   <div className="portfolio-card__top"><span>{project.number}</span><span>{project.type}</span></div>
-                  <div className="portfolio-card__visual" aria-hidden="true"><div className="portfolio-card__mark">{project.title.charAt(0)}</div><div className="portfolio-card__rule" /></div>
+                  <div className="portfolio-card__visual">{project.image ? <img src={project.image} alt={`${project.title} project`} /> : <div className="portfolio-card__mark">{project.title.charAt(0)}</div>}<div className="portfolio-card__visual-overlay"><span>{project.number}</span></div></div>
                   <div className="portfolio-card__content">
                     <motion.h2 initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .12, duration: .55 }}>{project.title}</motion.h2>
                     <motion.p initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: .2, duration: .55 }}>{project.description}</motion.p>
                     <div className="portfolio-card__work"><span>SEDECIA did</span>{project.work}</div>
-                    <div className="portfolio-card__status">{project.status}</div>
+                    <div className="portfolio-card__bottom"><span className={`portfolio-card__status portfolio-card__status--${project.status === 'Delivered' ? 'delivered' : 'development'}`}>{project.status}</span>{project.link && <a className="portfolio-card__visit" href={project.link} target="_blank" rel="noreferrer">Visit project <span>↗</span></a>}</div>
                   </div>
                 </motion.article>
               ))}
