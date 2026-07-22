@@ -13,7 +13,6 @@ import LoadingScreen from '@components/ui/LoadingScreen';
 const Home       = lazy(() => import('@pages/Home'));
 const About      = lazy(() => import('@pages/About'));
 const Services   = lazy(() => import('@pages/Services'));
-const Solutions  = lazy(() => import('@pages/Solutions'));
 const Industries = lazy(() => import('@pages/Industries'));
 const Portfolio  = lazy(() => import('@pages/Portfolio'));
 const Blog       = lazy(() => import('@pages/Blog'));
@@ -55,7 +54,6 @@ export default function App() {
               <Route path="/"           element={<Home />} />
               <Route path="/about"      element={<About />} />
               <Route path="/services"   element={<Services />} />
-              <Route path="/solutions"  element={<Solutions />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/portfolio"  element={<Portfolio />} />
               <Route path="/blog"       element={<Blog />} />
