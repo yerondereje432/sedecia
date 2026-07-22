@@ -16,11 +16,23 @@ const Services   = lazy(() => import('@pages/Services'));
 const Industries = lazy(() => import('@pages/Industries'));
 const Portfolio  = lazy(() => import('@pages/Portfolio'));
 const Contact    = lazy(() => import('@pages/Contact'));
-const FAQ        = lazy(() => import('@pages/FAQ'));
 const NotFound   = lazy(() => import('@pages/NotFound'));
 
 export default function App() {
   const { i18n } = useTranslation();
+  const [showIntroLoader, setShowIntroLoader] = React.useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.location.pathname === '/' && !sessionStorage.getItem('sedecia-intro-seen');
+  });
+
+  React.useEffect(() => {
+    if (!showIntroLoader) return undefined;
+    const timer = window.setTimeout(() => {
+      sessionStorage.setItem('sedecia-intro-seen', 'true');
+      setShowIntroLoader(false);
+    }, 2200);
+    return () => window.clearTimeout(timer);
+  }, [showIntroLoader]);
 
   // Apply RTL direction for Arabic
   useEffect(() => {
@@ -32,6 +44,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
+        {showIntroLoader && <LoadingScreen />}
         <Toaster
           position="top-right"
           toastOptions={{
@@ -55,7 +68,6 @@ export default function App() {
               <Route path="/industries" element={<Industries />} />
               <Route path="/portfolio"  element={<Portfolio />} />
               <Route path="/contact"    element={<Contact />} />
-              <Route path="/faq"        element={<FAQ />} />
               <Route path="*"           element={<NotFound />} />
             </Routes>
           </Layout>
