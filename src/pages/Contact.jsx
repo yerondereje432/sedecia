@@ -14,15 +14,13 @@ const CONTACT_API = 'https://sedecia-contact.yerondereje432.workers.dev';;
 
 // ─── Static data ────────────────────────────────────────────────────────────
 const SERVICES_LIST = [
-  'AI Automation', 'AI Chatbots', 'Custom Software Development',
-  'Web Development', 'Mobile App Development', 'Cybersecurity',
-  'Data Analytics', 'Enterprise AI Integration', 'IT Consulting', 'Other',
+  'Web Development', 'Web Design', 'Custom Software', 'UI/UX Design',
 ];
 
 const CONTACT_INFO = [
-  { icon: '✉️', label: 'Email Us',  value: 'contact@sedecia.com',       href: 'mailto:contact@sedecia.com' },
-  { icon: '📞', label: 'Call Us',   value: '+251-85-90-18-65',        href: 'tel:+251859018065' },
-  { icon: '📍', label: 'Location',  value: 'Harar, Ethiopia',         href: null },
+  { icon: 'MAIL', label: 'Email Us', value: 'contact@sedecia.com', href: 'mailto:contact@sedecia.com' },
+  { icon: 'CALL', label: 'Call Us', value: '+251-85-90-18-65', href: 'tel:+251859018065' },
+  { icon: 'BASE', label: 'Location', value: 'Harar, Ethiopia', href: null },
 ];
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -62,7 +60,7 @@ export default function Contact() {
         throw new Error(data?.error || 'Something went wrong.');
       }
 
-      toast.success("Message sent! We'll respond within 24 hours. 🚀");
+      toast.success("Message sent! We'll respond within 24 hours.");
       setForm(EMPTY_FORM);
     } catch (err) {
       console.error('[Contact form]', err);
@@ -93,16 +91,25 @@ export default function Contact() {
       <section className="contact-hero section" style={{ paddingTop: 'calc(var(--section-padding) + 80px)' }}>
         <div className="contact-hero__orb" aria-hidden="true" />
         <div className="container" style={{ textAlign: 'center' }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="badge badge-orange">{t('contact.badge')}</span>
-            <motion.h1 className="display-xl contact-hero__title" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .12, duration: .7 }}>
-              Let&apos;s talk about<br />
-              <span className="gradient-text">what you&apos;re building.</span>
-            </motion.h1>
-            <motion.p className="body-lg contact-hero__subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .25, duration: .65 }}>
-              Contact SEDECIA Technologies when you need a website, a clearer interface, or custom software shaped around your organization.
-            </motion.p>
-          </motion.div>
+          <div className="contact-hero__layout">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <span className="badge badge-orange">{t('contact.badge')}</span>
+              <motion.h1 className="display-xl contact-hero__title" initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .12, duration: .7 }}>
+                Let&apos;s talk about<br />
+                <span className="gradient-text">what you&apos;re building.</span>
+              </motion.h1>
+              <motion.p className="body-lg contact-hero__subtitle" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .25, duration: .65 }}>
+                Contact SEDECIA Technologies when you need a website, a clearer interface, or custom software shaped around your organization.
+              </motion.p>
+            </motion.div>
+            <motion.div className="contact-hero__visual" initial={{ opacity: 0, scale: .88, rotate: -4 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: .2, duration: .9 }} aria-hidden="true">
+              <div className="contact-hero__visual-grid" />
+              <div className="contact-hero__visual-card contact-hero__visual-card--main"><span className="contact-hero__visual-index">01</span><strong>Project brief</strong><small>Tell us what you want to build</small><i /></div>
+              <div className="contact-hero__visual-card contact-hero__visual-card--one">Web design <span>↗</span></div>
+              <div className="contact-hero__visual-card contact-hero__visual-card--two">Custom software <span>↗</span></div>
+              <div className="contact-hero__visual-orb" />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -118,15 +125,15 @@ export default function Contact() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7 }}
             >
-              <span className="contact-info-panel__eyebrow">Your next step</span>
-              <h2 className="contact-info-panel__title">Tell SEDECIA what you need.</h2>
+              <span className="contact-info-panel__eyebrow">A good place to start</span>
+              <h2 className="contact-info-panel__title">Bring us the thing you want to make better.</h2>
               <p className="contact-info-panel__sub">
-                Share the idea, challenge, or existing product you want to improve. We&apos;ll read it carefully and respond with a useful next step.
+                Maybe your school needs a clearer website. Maybe your hotel needs a better digital experience. Maybe your team has a workflow that deserves its own software. Start by telling us what is not working yet.
               </p>
 
               <div className="contact-info-panel__items">
-                {CONTACT_INFO.map((item) => (
-                  <div key={item.label} className="contact-info-item">
+                {CONTACT_INFO.map((item, index) => (
+                  <motion.div key={item.label} className="contact-info-item" initial={{ opacity: 0, x: -16 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ delay: .28 + index * .1, duration: .45 }}>
                     <div className="contact-info-item__icon">{item.icon}</div>
                     <div>
                       <div className="contact-info-item__label">{item.label}</div>
@@ -138,9 +145,21 @@ export default function Contact() {
                         <div className="contact-info-item__value">{item.value}</div>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
+
+              <motion.div className="contact-info-panel__steps">
+                {[
+                  ['01', 'You share the context'],
+                  ['02', 'We understand the real need'],
+                  ['03', 'We suggest a sensible next step'],
+                ].map(([number, label], index) => (
+                  <motion.div key={number} initial={{ opacity: 0, x: -18 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ delay: .35 + index * .12, duration: .45 }}>
+                    <span>{number}</span><p>{label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
 
               {/* Social */}
               <div className="contact-info-panel__social">
@@ -155,7 +174,7 @@ export default function Contact() {
               {/* Map placeholder */}
               <div className="contact-info-panel__map">
                 <div className="contact-info-panel__map-inner">
-                  <span>🗺️</span>
+                  <span className="contact-info-panel__map-mark">ET</span>
                   <span>Harar, Ethiopia</span>
                 </div>
               </div>
@@ -171,7 +190,7 @@ export default function Contact() {
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className="contact-form__header">
                   <h3 className="contact-form__title">Start with the brief.</h3>
-                  <p className="contact-form__sub">Tell us what you are trying to make, improve, or clarify.</p>
+                  <p className="contact-form__sub">A few useful details help us understand where to begin.</p>
                 </div>
 
                 <div className="contact-form__row">
@@ -223,7 +242,7 @@ export default function Contact() {
                   <textarea
                     id="message" name="message"
                     className="contact-form__input contact-form__textarea"
-                    placeholder="Tell us about your project, goals, and challenges…"
+                    placeholder="What are you trying to build or improve? Tell us who it is for, what feels difficult today, and what a good result would look like…"
                     rows={6} value={form.message} onChange={handleChange} required
                   />
                 </div>
@@ -241,7 +260,7 @@ export default function Contact() {
                 </button>
 
                 <p className="contact-form__privacy">
-                  🔐 Your information is 100% secure. We never share your data.
+                  Your information is secure. We never share your data.
                 </p>
               </form>
             </motion.div>
