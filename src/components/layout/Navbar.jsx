@@ -1,129 +1,328 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
-import './Navbar.css';
-
-const NAV_LINKS = [
-  { key: 'home',      path: '/' },
-  { key: 'about',     path: '/about' },
-  { key: 'services',  path: '/services' },
-  { key: 'portfolio', path: '/portfolio' },
-  { key: 'contact',   path: '/contact' },
-];
-
-export default function Navbar() {
-  const { t } = useTranslation();
-  const location = useLocation();
-  const [scrolled, setScrolled]       = useState(false);
-  const [hidden, setHidden]           = useState(false);
-  const [progress, setProgress]       = useState(0);
-  const [mobileOpen, setMobileOpen]   = useState(false);
-  const [hoveredPath, setHoveredPath] = useState(null);
-
-  // Scroll detection
-  useEffect(() => {
-    let previousY = window.scrollY;
-    const onScroll = () => {
-      const currentY = window.scrollY;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setScrolled(currentY > 20);
-      setHidden(currentY > previousY && currentY > 140 && !mobileOpen);
-      setProgress(max > 0 ? currentY / max : 0);
-      previousY = currentY;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [mobileOpen]);
-
-  // Close mobile menu on route change
-  useEffect(() => { setMobileOpen(false); }, [location]);
-
-  return (
-    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${hidden ? 'navbar--hidden' : ''}`}>
-      <div className="navbar__progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
-      <div className="navbar__inner container">
-        {/* Logo */}
-        <Link to="/" className="navbar__logo" aria-label="SEDECIA Home">
-          <div className="navbar__logo-icon">
-            <img src="/sedecia-logo.png" alt="SEDECIA Logo" style={{ height: '48px', width: 'auto', display: 'block' }} />
-          </div>
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav className="navbar__links hide-mobile" aria-label="Main navigation">
-          {NAV_LINKS.map(({ key, path }) => (
-            <NavLink
-              key={key}
-              to={path}
-              onMouseEnter={() => setHoveredPath(path)}
-              onMouseLeave={() => setHoveredPath(null)}
-              className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}
-            >
-              {({ isActive }) => (
-                <>
-                  {(isActive || hoveredPath === path) && <motion.span className="navbar__link-pill" layoutId="navbar-pill" transition={{ type: 'spring', stiffness: 420, damping: 30 }} />}
-                  <span className="navbar__link-label">{t(`nav.${key}`)}</span>
-                </>
-              )}
-            </NavLink>
-          ))}
-        </nav>
-
-        {/* Actions */}
-        <div className="navbar__actions">
-          {/* CTA Button */}
-          <Link to="/contact" className="btn btn-primary btn-sm hide-mobile">
-            {t('nav.getStarted')}
-          </Link>
-
-          {/* Mobile Hamburger */}
-          <button
-            className={`navbar__hamburger hide-desktop ${mobileOpen ? 'open' : ''}`}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-          >
-            <span /><span /><span />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            className="navbar__mobile"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <nav className="navbar__mobile-links">
-              {NAV_LINKS.map(({ key, path }, i) => (
-                <motion.div
-                  key={key}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <NavLink
-                    to={path}
-                    className={({ isActive }) =>
-                      `navbar__mobile-link ${isActive ? 'active' : ''}`
-                    }
-                  >
-                    {t(`nav.${key}`)}
-                  </NavLink>
-                </motion.div>
-              ))}
-              <Link to="/contact" className="btn btn-primary" style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}>
-                {t('nav.getStarted')}
-              </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
-  );
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  padding-block: 1.25rem;
+  transition: var(--transition-base);
 }
+
+.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--mid-gray);
+  padding-block: 0.875rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.navbar__logo-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-spring);
+}
+
+.navbar__logo-icon img {
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.30)) brightness(1.08);
+  transition: filter var(--transition-fast), transform var(--transition-spring);
+}
+
+.navbar__logo:hover .navbar__logo-icon {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.navbar__logo:hover .navbar__logo-icon img {
+  filter: drop-shadow(0 2px 12px rgba(244, 121, 32, 0.55)) brightness(1.15);
+}
+
+.navbar__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.navbar__logo-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+.navbar__logo-sub {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  letter-spacing: 0.02em;
+}
+
+/* Nav Links */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar__link {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-gray);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  position: relative;
+  text-decoration: none;
+}
+
+.navbar__link:hover {
+  color: var(--navy);
+  background: var(--light-gray);
+}
+
+.navbar__link--active {
+  color: var(--orange) !important;
+  font-weight: 600;
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+/* Actions */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Language Switcher */
+.lang-switcher {
+  position: relative;
+}
+
+.lang-switcher__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--light-gray);
+  border: 1px solid var(--mid-gray);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.lang-switcher__btn:hover {
+  border-color: var(--orange);
+  background: var(--orange-glow);
+  color: var(--orange);
+}
+
+.lang-switcher__code {
+  letter-spacing: 0.05em;
+}
+
+.lang-switcher__chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-fast);
+}
+
+.lang-switcher__chevron.open {
+  transform: rotate(180deg);
+}
+
+.lang-switcher__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--mid-gray);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
+  min-width: 180px;
+  z-index: var(--z-dropdown);
+  overflow: hidden;
+}
+
+.lang-switcher__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.65rem 0.875rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-align: left;
+}
+
+.lang-switcher__item:hover {
+  background: var(--light-gray);
+}
+
+.lang-switcher__item.active {
+  background: var(--orange-glow);
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* Hamburger */
+.navbar__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: var(--transition-fast);
+  transform-origin: center;
+}
+
+.navbar__hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navbar__hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.navbar__mobile {
+  background: var(--white);
+  border-top: 1px solid var(--mid-gray);
+  overflow: hidden;
+}
+
+.navbar__mobile-links {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem var(--container-padding) 1.5rem;
+  gap: 0.25rem;
+}
+
+.navbar__mobile-link {
+  display: block;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link.active {
+  color: var(--orange);
+  background: var(--orange-glow);
+  border-color: transparent;
+}
+
+/* RTL Support */
+[dir="rtl"] .navbar__actions { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .lang-switcher__dropdown { right: auto; left: 0; }
+
+
+/* Shared floating navigation treatment */
+.navbar { padding-top:1rem; }
+.navbar__inner { min-height:58px; padding-block:.45rem; padding-inline:1rem; border:1px solid rgba(27,42,74,.1); border-radius:999px; background:rgba(255,255,255,.9); backdrop-filter:blur(18px) saturate(150%); box-shadow:0 10px 30px rgba(27,42,74,.08); }
+.navbar--scrolled { background:transparent; border-bottom:0; box-shadow:none; padding-block:.75rem; }
+.navbar--scrolled .navbar__inner { box-shadow:0 14px 38px rgba(27,42,74,.12); }
+.navbar__link { font-size:.78rem; }
+.navbar__logo-icon { width:44px; height:44px; }
+.navbar__logo-icon img { max-height:38px; }
+@media (max-width:768px) { .navbar__inner { border-radius:18px; padding-inline:.75rem; } .navbar__actions { gap:.35rem; } }
+
+.navbar { transition: transform .45s cubic-bezier(.16,1,.3,1), padding .35s ease; }
+.navbar--hidden { transform: translateY(-120%); }
+.navbar__progress { position:absolute; left:0; top:0; z-index:2; width:100%; height:2px; background:var(--orange); transform-origin:left; }
+.navbar__link { isolation:isolate; overflow:hidden; transition:color .25s ease, transform .25s cubic-bezier(.16,1,.3,1), letter-spacing .25s ease; }
+.navbar__link:hover { transform:scale(1.04); letter-spacing:.025em; background:transparent; }
+.navbar__link-pill { position:absolute; inset:0; z-index:-1; border:1px solid rgba(244,121,32,.22); border-radius:999px; background:rgba(244,121,32,.1); box-shadow:0 5px 14px rgba(244,121,32,.08); }
+.navbar__link-label { position:relative; z-index:1; }
+.navbar__link--active::after { width:calc(100% - 1.5rem); bottom:-3px; opacity:.9; }
+.navbar__hamburger { transition:transform .3s ease; }
+.navbar__mobile { box-shadow:0 22px 45px rgba(27,42,74,.12); }
+@media (prefers-reduced-motion:reduce) { .navbar { transition:none; } .navbar--hidden { transform:none; } }
+
+/* Strong segmented navigation treatment */
+.navbar__links { position:relative; flex:0 1 auto; gap:.15rem; padding:.25rem; border:1px solid rgba(27,42,74,.08); border-radius:999px; background:rgba(27,42,74,.045); }
+.navbar__link { z-index:0; padding:.58rem .85rem; border-radius:999px; color:rgba(27,42,74,.62); }
+.navbar__link-pill { z-index:-1; inset:0; background:var(--white); border-color:rgba(244,121,32,.22); box-shadow:0 4px 14px rgba(27,42,74,.1); }
+.navbar__link:hover { color:var(--navy); }
+.navbar__link::before { content:''; position:absolute; z-index:2; left:50%; bottom:3px; width:0; height:2px; border-radius:2px; background:var(--orange); transform:translateX(-50%); transition:width .3s cubic-bezier(.16,1,.3,1); }
+.navbar__link:hover::before { width:calc(100% - 1.7rem); }
+.navbar__link--active::after { display:none; }
+.navbar--scrolled .navbar__inner { min-height:50px; }
+.navbar--scrolled .navbar__link { padding-block:.48rem; }
+.navbar__actions .btn-primary { box-shadow:0 8px 18px rgba(244,121,32,.22); }
+@media (max-width:900px) { .navbar__links { gap:0; } .navbar__link { padding-inline:.6rem; } }
+@media (max-width:768px) { .navbar__links { display:none; } .navbar__mobile { position:absolute; left:0; right:0; max-height:calc(100vh - 80px); overflow:auto; border-radius:0 0 24px 24px; background:rgba(255,255,255,.97); backdrop-filter:blur(24px); } .navbar__mobile-links { padding-top:1.5rem; } .navbar__mobile-link { font-size:1.2rem; padding:1rem; } }
+
+/* Primary action treatment */
+.navbar__actions .btn-primary { position:relative; overflow:hidden; padding-inline:1.25rem; border:1px solid rgba(255,255,255,.35); background:linear-gradient(135deg,#ff9a45,#f47920 58%,#d35d12); box-shadow:0 9px 20px rgba(244,121,32,.26); transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s ease; }
+.navbar__actions .btn-primary::before { content:''; position:absolute; top:0; bottom:0; left:-80%; width:45%; transform:skewX(-18deg); background:rgba(255,255,255,.28); transition:left .55s ease; }
+.navbar__actions .btn-primary::after { content:'↗'; position:relative; margin-left:.45rem; font-size:1rem; transition:transform .3s ease; }
+.navbar__actions .btn-primary:hover { transform:translateY(-3px) scale(1.03); box-shadow:0 14px 30px rgba(244,121,32,.38); }
+.navbar__actions .btn-primary:hover::before { left:135%; }
+.navbar__actions .btn-primary:hover::after { transform:translate(3px,-3px); }
+.navbar__actions .btn-primary:active { transform:translateY(0) scale(.98); }
