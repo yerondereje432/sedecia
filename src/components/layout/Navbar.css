@@ -335,3 +335,13 @@
 .navbar__logo-name { color:var(--navy); font:700 .86rem/1 var(--font-display); letter-spacing:.025em; }
 .navbar__logo-sub { color:var(--text-gray); font:500 .58rem/1 var(--font-body); letter-spacing:.08em; }
 @media (max-width:768px) { .navbar__logo-icon { width:34px; height:34px; } .navbar__logo-icon img { width:27px; height:27px; } .navbar__logo-name { font-size:.78rem; } .navbar__logo-sub { font-size:.52rem; } }
+
+/* Expanded SEDECIA lockup: icon + wordmark, matching the reference composition */
+.navbar__inner { max-width:1240px; padding-inline:1.25rem; }
+.navbar__logo { min-width:185px; gap:.75rem; }
+.navbar__logo-icon { width:48px; height:48px; border-radius:12px; }
+.navbar__logo-icon img { width:36px; height:36px; }
+.navbar__logo-name { font-size:1rem; letter-spacing:.02em; }
+.navbar__logo-sub { margin-top:.18rem; font-size:.62rem; letter-spacing:.1em; }
+@media (max-width:900px) { .navbar__logo { min-width:auto; } }
+@media (max-width:768px) { .navbar__logo-icon { width:40px; height:40px; } .navbar__logo-icon img { width:31px; height:31px; } .navbar__logo-name { font-size:.86rem; } .navbar__logo-sub { font-size:.55rem; } }
