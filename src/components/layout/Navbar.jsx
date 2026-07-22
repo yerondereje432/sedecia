@@ -1,53 +1,47 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { LANGUAGES } from '@i18n/index';
 import './Navbar.css';
 
 const NAV_LINKS = [
-  { key: 'home',       path: '/' },
-  { key: 'about',      path: '/about' },
-  { key: 'services',   path: '/services' } ,
-  { key: 'industries', path: '/industries' },
-  { key: 'portfolio',  path: '/portfolio' },
-  { key: 'contact',    path: '/contact' },
+  { key: 'home',      path: '/' },
+  { key: 'about',     path: '/about' },
+  { key: 'services',  path: '/services' },
+  { key: 'portfolio', path: '/portfolio' },
+  { key: 'contact',   path: '/contact' },
 ];
 
 export default function Navbar() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const location = useLocation();
   const [scrolled, setScrolled]       = useState(false);
+  const [hidden, setHidden]           = useState(false);
+  const [progress, setProgress]       = useState(0);
   const [mobileOpen, setMobileOpen]   = useState(false);
-  const [langOpen, setLangOpen]       = useState(false);
-  const langRef = useRef(null);
+  const [hoveredPath, setHoveredPath] = useState(null);
 
   // Scroll detection
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let previousY = window.scrollY;
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrolled(currentY > 20);
+      setHidden(currentY > previousY && currentY > 140 && !mobileOpen);
+      setProgress(max > 0 ? currentY / max : 0);
+      previousY = currentY;
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [mobileOpen]);
 
   // Close mobile menu on route change
   useEffect(() => { setMobileOpen(false); }, [location]);
 
-  // Close lang dropdown on outside click
-  useEffect(() => {
-    const handler = (e) => { if (langRef.current && !langRef.current.contains(e.target)) setLangOpen(false); };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
-
-  const changeLanguage = (code) => {
-    i18n.changeLanguage(code);
-    setLangOpen(false);
-  };
-
-  const currentLang = LANGUAGES.find(l => l.code === i18n.language) || LANGUAGES[0];
-
   return (
-    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+    <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${hidden ? 'navbar--hidden' : ''}`}>
+      <div className="navbar__progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
       <div className="navbar__inner container">
         {/* Logo */}
         <Link to="/" className="navbar__logo" aria-label="SEDECIA Home">
@@ -62,55 +56,22 @@ export default function Navbar() {
             <NavLink
               key={key}
               to={path}
-              className={({ isActive }) =>
-                `navbar__link ${isActive ? 'navbar__link--active' : ''}`
-              }
+              onMouseEnter={() => setHoveredPath(path)}
+              onMouseLeave={() => setHoveredPath(null)}
+              className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}
             >
-              {t(`nav.${key}`)}
+              {({ isActive }) => (
+                <>
+                  {(isActive || hoveredPath === path) && <motion.span className="navbar__link-pill" layoutId="navbar-pill" transition={{ type: 'spring', stiffness: 420, damping: 30 }} />}
+                  <span className="navbar__link-label">{t(`nav.${key}`)}</span>
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
         {/* Actions */}
         <div className="navbar__actions">
-          {/* Language Switcher */}
-          <div className="lang-switcher" ref={langRef}>
-            <button
-              className="lang-switcher__btn"
-              onClick={() => setLangOpen(!langOpen)}
-              aria-expanded={langOpen}
-              aria-label="Change language"
-            >
-              <span>{currentLang.flag}</span>
-              <span className="lang-switcher__code">{currentLang.code.toUpperCase()}</span>
-              <svg className={`lang-switcher__chevron ${langOpen ? 'open' : ''}`} viewBox="0 0 16 16" fill="none">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <AnimatePresence>
-              {langOpen && (
-                <motion.div
-                  className="lang-switcher__dropdown"
-                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {LANGUAGES.map((lang) => (
-                    <button
-                      key={lang.code}
-                      className={`lang-switcher__item ${i18n.language === lang.code ? 'active' : ''}`}
-                      onClick={() => changeLanguage(lang.code)}
-                    >
-                      <span>{lang.flag}</span>
-                      <span>{lang.label}</span>
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
           {/* CTA Button */}
           <Link to="/contact" className="btn btn-primary btn-sm hide-mobile">
             {t('nav.getStarted')}
