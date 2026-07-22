@@ -21,7 +21,7 @@ export default function CTASection() {
             <motion.span className="cta-section__reveal-line cta-section__title-accent" {...line(.32)}>worth building?</motion.span>
           </h2>
           <motion.p className="body-lg cta-section__sub" {...line(.48)}>
-            Tell us what you are trying to make, improve, or clarify. We&apos;ll help you find the right digital shape for it.
+            Tell me what you are trying to make, improve, or clarify. We&apos;ll help you find the right digital shape for it.
           </motion.p>
           <motion.div className="cta-section__actions" {...line(.58)}>
             <Link to="/contact" className="btn btn-primary btn-lg">Start a conversation <span>↗</span></Link>
