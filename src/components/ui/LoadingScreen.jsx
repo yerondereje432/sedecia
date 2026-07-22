@@ -1,24 +1,32 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './LoadingScreen.css';
 
 export default function LoadingScreen() {
   return (
-    <div className="loading-screen" role="status" aria-label="Loading">
-      <div className="loading-screen__inner">
-        <div className="loading-logo">
-          <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="loading-logo__svg">
-            <path d="M30 4L54 17.5V42.5L30 56L6 42.5V17.5L30 4Z" fill="#F47920"/>
-            <path d="M30 12L46 21.5V38.5L30 48L14 38.5V21.5L30 12Z" fill="white"/>
-            <circle cx="30" cy="28" r="4" fill="#F47920" className="loading-logo__dot"/>
-            <path d="M22 28C22 23.5817 25.5817 20 30 20C34.4183 20 38 23.5817 38 28" stroke="#F47920" strokeWidth="3" strokeLinecap="round"/>
-          </svg>
-        </div>
-        <div className="loading-screen__brand">
-          <span className="loading-screen__name">SEDECIA</span>
-        </div>
-        <div className="loading-screen__bar">
-          <div className="loading-screen__progress" />
-        </div>
+    <div className="loading-screen" role="status" aria-label="Loading SEDECIA">
+      <div className="loading-screen__grid" aria-hidden="true" />
+      <div className="loading-screen__glow loading-screen__glow--one" aria-hidden="true" />
+      <div className="loading-screen__glow loading-screen__glow--two" aria-hidden="true" />
+      <div className="loading-screen__corner loading-screen__corner--tl" aria-hidden="true">SEDECIA / 01</div>
+      <div className="loading-screen__corner loading-screen__corner--br" aria-hidden="true">DIGITAL STUDIO / ETHIOPIA</div>
+
+      <motion.div className="loading-screen__stage" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .5 }}>
+        <div className="loading-screen__orbit loading-screen__orbit--one" aria-hidden="true" />
+        <div className="loading-screen__orbit loading-screen__orbit--two" aria-hidden="true" />
+        <motion.div className="loading-screen__logo-wrap" initial={{ opacity: 0, scale: .72, rotateY: -35 }} animate={{ opacity: 1, scale: 1, rotateY: 0 }} transition={{ delay: .15, duration: 1, type: 'spring', stiffness: 90, damping: 18 }}>
+          <div className="loading-screen__logo-shadow" />
+          <img className="loading-screen__logo" src="/sedecia-logo.png" alt="SEDECIA" />
+        </motion.div>
+        <motion.div className="loading-screen__brand" initial={{ opacity: 0, letterSpacing: '.45em' }} animate={{ opacity: 1, letterSpacing: '.18em' }} transition={{ delay: .55, duration: .8 }}>
+          <span>SEDECIA</span><small>TECHNOLOGIES</small>
+        </motion.div>
+      </motion.div>
+
+      <div className="loading-screen__footer">
+        <div className="loading-screen__status"><span className="loading-screen__status-dot" /> Preparing your experience</div>
+        <div className="loading-screen__bar"><motion.div className="loading-screen__progress" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 2.2, ease: [.16, 1, .3, 1] }} /></div>
+        <div className="loading-screen__percent">Loading / 100%</div>
       </div>
     </div>
   );
