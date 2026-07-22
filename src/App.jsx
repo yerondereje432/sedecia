@@ -20,19 +20,6 @@ const NotFound   = lazy(() => import('@pages/NotFound'));
 
 export default function App() {
   const { i18n } = useTranslation();
-  const [showIntroLoader, setShowIntroLoader] = React.useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.location.pathname === '/' && !sessionStorage.getItem('sedecia-intro-seen');
-  });
-
-  React.useEffect(() => {
-    if (!showIntroLoader) return undefined;
-    const timer = window.setTimeout(() => {
-      sessionStorage.setItem('sedecia-intro-seen', 'true');
-      setShowIntroLoader(false);
-    }, 2200);
-    return () => window.clearTimeout(timer);
-  }, [showIntroLoader]);
 
   // Apply RTL direction for Arabic
   useEffect(() => {
@@ -44,7 +31,6 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
-        {showIntroLoader && <LoadingScreen />}
         <Toaster
           position="top-right"
           toastOptions={{
