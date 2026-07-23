@@ -9,7 +9,6 @@ export default function LoadingScreen() {
       <div className="loading-screen__glow loading-screen__glow--one" aria-hidden="true" />
       <div className="loading-screen__glow loading-screen__glow--two" aria-hidden="true" />
       <div className="loading-screen__corner loading-screen__corner--tl" aria-hidden="true">SEDECIA / 01</div>
-      <div className="loading-screen__corner loading-screen__corner--br" aria-hidden="true">DIGITAL STUDIO / ETHIOPIA</div>
 
       <motion.div className="loading-screen__stage" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .5 }}>
         <div className="loading-screen__orbit loading-screen__orbit--one" aria-hidden="true" />
