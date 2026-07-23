@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import './LoadingScreen.css';
 
 export default function LoadingScreen() {
+  const [percent, setPercent] = useState(0);
+
+  useEffect(() => {
+    const duration = 2200;
+    const start = performance.now();
+    let frame;
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setPercent(Math.round(progress * 100));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <div className="loading-screen" role="status" aria-label="Loading SEDECIA">
       <div className="loading-screen__grid" aria-hidden="true" />
       <div className="loading-screen__glow loading-screen__glow--one" aria-hidden="true" />
       <div className="loading-screen__glow loading-screen__glow--two" aria-hidden="true" />
       <div className="loading-screen__corner loading-screen__corner--tl" aria-hidden="true">SEDECIA / 01</div>
+      
 
       <motion.div className="loading-screen__stage" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .5 }}>
         <div className="loading-screen__orbit loading-screen__orbit--one" aria-hidden="true" />
@@ -25,7 +41,7 @@ export default function LoadingScreen() {
       <div className="loading-screen__footer">
         <div className="loading-screen__status"><span className="loading-screen__status-dot" /> Preparing your experience</div>
         <div className="loading-screen__bar"><motion.div className="loading-screen__progress" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 2.2, ease: [.16, 1, .3, 1] }} /></div>
-        <div className="loading-screen__percent">Loading / 100%</div>
+        <div className="loading-screen__percent">Loading / {percent}%</div>
       </div>
     </div>
   );
