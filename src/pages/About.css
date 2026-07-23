@@ -47,3 +47,11 @@
 .about-page__timeline { perspective: 1200px; }
 .about-page__timeline-list { transform-style: preserve-3d; transform-origin: center center; will-change: transform; }
 .about-page__timeline-item { transform-style: preserve-3d; }
+
+/* Connected scroll-drawn journey timeline */
+.about-page__timeline-list { transform-style:flat; perspective:none; }
+.about-page__timeline-list::before { background:rgba(255,255,255,.14); }
+.about-page__timeline-progress { position:absolute; z-index:1; left:100px; top:0; bottom:0; width:2px; background:var(--orange); transform-origin:top; box-shadow:0 0 12px rgba(244,121,32,.45); }
+.about-page__timeline-dot { position:relative; z-index:2; transition:background .35s ease, box-shadow .35s ease, transform .35s ease; }
+.about-page__timeline-item:hover .about-page__timeline-dot { transform:scale(1.35); box-shadow:0 0 0 4px rgba(244,121,32,.28), 0 0 18px rgba(244,121,32,.5); }
+@media (max-width:600px) { .about-page__timeline-list::before,.about-page__timeline-progress { left:64px; } }
