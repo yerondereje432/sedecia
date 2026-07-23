@@ -39,6 +39,17 @@ const PROJECTS = [
     link: 'https://web-production-71a88.up.railway.app/',
     accent: 'orange',
   },
+  {
+    number: '04',
+    type: 'Employment platform',
+    title: 'Konyx',
+    description: 'A digital job marketplace in development, designed to connect job seekers with employers through a clearer hiring experience.',
+    work: 'Product interface · Job discovery · Employer and job-seeker workflows',
+    status: 'Under Development',
+    image: '/portfolio-konyx.png',
+    link: null,
+    accent: 'navy',
+  },
 ];
 
 const reveal = {
