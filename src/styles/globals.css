@@ -1,5 +1,5 @@
 /* ============================================
-   SEDECIA TECHNOLOGIES — GLOBAL STYLES
+   SMART TECHNOLOGIES — GLOBAL STYLES
    Brand: Orange #F47920 | Navy #1B2A4A | White #FFFFFF
    ============================================ */
 
@@ -500,3 +500,26 @@ ul, ol {
 @media (min-width: 769px) {
   .hide-desktop { display: none !important; }
 }
+
+/* Accessible motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Updated typography: editorial display + clean, warm body copy */
+:root {
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+}
+
+/* Lighter typography pass — preserve current fonts, reduce visual heaviness */
+.display-xl, .display-lg, .display-md { font-weight:600; }
+.heading-lg { font-weight:600; }
+.btn { font-weight:600; }
+.navbar__logo-name, .footer__logo-name { font-weight:700; }
+body { font-weight:400; }
