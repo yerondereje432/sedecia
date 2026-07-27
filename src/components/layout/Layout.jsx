@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import ChatbotWidget from '@components/ui/ChatbotWidget';
 import ScrollToTop from '@components/ui/ScrollToTop';
 
 export default function Layout({ children }) {
@@ -50,7 +49,6 @@ export default function Layout({ children }) {
       <Navbar />
       <main id="main-content">{children}</main>
       <Footer />
-      <ChatbotWidget />
       <ScrollToTop />
     </>
   );
