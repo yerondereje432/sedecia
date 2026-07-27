@@ -21,6 +21,19 @@ const Terms      = lazy(() => import('@pages/Terms'));
 const Cookies    = lazy(() => import('@pages/Cookies'));
 const NotFound   = lazy(() => import('@pages/NotFound'));
 
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('config', 'G-PBKZYJWTYE', {
+      page_path: `${location.pathname}${location.search}`,
+    });
+  }, [location]);
+
+  return null;
+}
+
 export default function App() {
   const { i18n } = useTranslation();
 
@@ -34,6 +47,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
+        <AnalyticsTracker />
         <Toaster
           position="top-right"
           toastOptions={{
