@@ -16,6 +16,9 @@ const Services   = lazy(() => import('@pages/Services'));
 const Industries = lazy(() => import('@pages/Industries'));
 const Portfolio  = lazy(() => import('@pages/Portfolio'));
 const Contact    = lazy(() => import('@pages/Contact'));
+const Privacy    = lazy(() => import('@pages/Privacy'));
+const Terms      = lazy(() => import('@pages/Terms'));
+const Cookies    = lazy(() => import('@pages/Cookies'));
 const NotFound   = lazy(() => import('@pages/NotFound'));
 
 export default function App() {
@@ -54,6 +57,9 @@ export default function App() {
               <Route path="/industries" element={<Industries />} />
               <Route path="/portfolio"  element={<Portfolio />} />
               <Route path="/contact"    element={<Contact />} />
+              <Route path="/privacy"    element={<Privacy />} />
+              <Route path="/terms"      element={<Terms />} />
+              <Route path="/cookies"    element={<Cookies />} />
               <Route path="*"           element={<NotFound />} />
             </Routes>
           </Layout>
