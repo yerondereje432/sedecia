@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -7,9 +7,20 @@ import ScrollToTop from '@components/ui/ScrollToTop';
 
 export default function Layout({ children }) {
   const location = useLocation();
+  const lenisRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const resetScroll = () => {
+      window.scrollTo(0, 0);
+      lenisRef.current?.scrollTo(0, { immediate: true, force: true });
+    };
+    resetScroll();
+    const frame = requestAnimationFrame(resetScroll);
+    const timer = window.setTimeout(resetScroll, 80);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+    };
   }, [location.pathname]);
 
   // Smooth scroll with Lenis (graceful degradation if not loaded)
@@ -22,6 +33,7 @@ export default function Layout({ children }) {
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smooth: true,
       });
+      lenisRef.current = lenis;
       function raf(time) {
         if (!active) return;
         lenis.raf(time);
@@ -30,7 +42,7 @@ export default function Layout({ children }) {
       requestAnimationFrame(raf);
     }).catch(() => {});
 
-    return () => { active = false; if (lenis) lenis.destroy(); };
+    return () => { active = false; lenisRef.current = null; if (lenis) lenis.destroy(); };
   }, []);
 
   return (
