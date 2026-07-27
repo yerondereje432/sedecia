@@ -523,3 +523,15 @@ ul, ol {
 .btn { font-weight:600; }
 .navbar__logo-name, .footer__logo-name { font-weight:700; }
 body { font-weight:400; }
+
+/* Restored original SEDECIA typography */
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+.display-xl { font-weight:800; }
+.display-lg { font-weight:700; }
+.display-md { font-weight:700; }
+.heading-lg { font-weight:600; }
+.btn { font-weight:600; }
+
