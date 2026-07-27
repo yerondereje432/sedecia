@@ -5,7 +5,7 @@ import CountUp from 'react-countup';
 import './StatsSection.css';
 
 const STATS = [
-  { value: 3, suffix: '', label: 'Selected projects', note: 'Websites, learning products, and school software' },
+  { value: 4+, suffix: '', label: 'Selected projects', note: 'Websites, learning products, and school software' },
   { value: 4, suffix: '', label: 'Focused capabilities', note: 'Web, design, software, and UI/UX' },
   { value: 5, suffix: '', label: 'Organization types', note: 'Schools, universities, hotels, guides, and gyms' },
 ];
