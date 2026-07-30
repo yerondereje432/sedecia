@@ -56,7 +56,7 @@ const PROJECTS = [
     title: 'Ready-to-use template',
     description: 'A professionally designed website template available for businesses that want a faster and more affordable starting point.',
     work: 'Website design · Public pages · Animations',
-    status: 'Template',
+    status: 'Ready-to-use',
     image: '/mj.jpg',
     link: 'https://schoolweb-beige-delta.vercel.app/',
     accent: 'orange',
