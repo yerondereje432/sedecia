@@ -58,7 +58,7 @@ const PROJECTS = [
     work: 'Website design · Public pages · Animations',
     status: 'Ready-to-use',
     image: '/mj.jpg',
-    link: 'https://schoolweb-beige-delta.vercel.app/',
+    link: 'https://mjdecor-seven.vercel.app',
     accent: 'orange',
   },
 ];
