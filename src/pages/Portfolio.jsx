@@ -19,17 +19,6 @@ const PROJECTS = [
   },
   {
     number: '02',
-    type: 'AI learning product',
-    title: 'GROOT',
-    description: 'A curriculum-locked AI tutor for Ethiopian high-school students. GROOT grounds answers in grade and subject-specific textbook content.',
-    work: 'Product interface · AI chat experience · Curriculum-aware learning flow · RAG vertical slice',
-    status: 'Under Development',
-    image: '/groot-logo.png',
-    link: null,
-    accent: 'navy',
-  },
-  {
-    number: '03',
     type: 'School management',
     title: 'Sunday School Portal',
     description: 'A practical school operations portal supporting lessons, assignments, attendance, grading, and student progress.',
@@ -40,7 +29,7 @@ const PROJECTS = [
     accent: 'orange',
   },
   {
-    number: '04',
+    number: '03',
     type: 'Employment platform',
     title: 'Konyx',
     description: 'A digital job marketplace in development, designed to connect job seekers with employers through a clearer hiring experience.',
@@ -51,7 +40,7 @@ const PROJECTS = [
     accent: 'navy',
   },
    {
-    number: '05',
+    number: '04',
     type: 'Template',
     title: 'Ready-to-use template',
     description: 'A professionally designed website template available for businesses that want a faster and more affordable starting point.',
