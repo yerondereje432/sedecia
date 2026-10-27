@@ -50,6 +50,17 @@ const PROJECTS = [
     link: 'https://mjdecor-seven.vercel.app',
     accent: 'orange',
   },
+  {
+    number: '05',
+    type: 'Artifical Intelligence',
+    title: 'TimhirtET',
+    description: 'A curriculum-grounded RAG-powered totur for Ethiopian high-school students',
+    work: 'Website Design · RAG pipeline · Backend · AI service · Ingestion',
+    status: 'Delivered',
+    image: '/portfolio-timhirtet.png',
+    link: null,
+    accent: 'navy',
+  },
 ];
 
 const reveal = {
