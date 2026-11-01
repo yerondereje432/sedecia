@@ -53,12 +53,12 @@ const PROJECTS = [
   {
     number: '05',
     type: 'AI Tutor',
-    title: 'RAG',
+    title: 'AI Tutor',
     description: 'a RAG-powered curriculum-grounded AI tutor for Ethiopian highschool studnets' ,
-    work: 'RAG · Postgres · SQL · Web Development · AI service · ML',
+    work: 'RAG · PostgreSQL · Web Development · AI service · UI/UX',
     status: 'Under Development',
     image: '/logo.png',
-    link: 'null',
+    link: null,
     accent: 'navy',
   },
 ];
