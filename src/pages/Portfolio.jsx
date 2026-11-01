@@ -50,6 +50,17 @@ const PROJECTS = [
     link: 'https://mjdecor-seven.vercel.app',
     accent: 'orange',
   },
+  {
+    number: '05',
+    type: 'AI Tutor',
+    title: 'RAG',
+    description: 'a RAG-powered curriculum-grounded AI tutor for Ethiopian highschool studnets' ,
+    work: 'RAG · Postgres · SQL · Web Development · AI service · ML',
+    status: 'Under Development',
+    image: '/logo.png',
+    link: 'null',
+    accent: 'navy',
+  },
 ];
 
 const reveal = {
