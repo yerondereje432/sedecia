@@ -54,7 +54,7 @@ const PROJECTS = [
     number: '05',
     type: 'AI Tutor',
     title: 'TimihirtET',
-    description: 'a RAG-powered curriculum-grounded AI tutor for Ethiopian highschool studnets' ,
+    description: 'a RAG-powered curriculum-grounded AI tutor for Ethiopian highschool students that locks on the Ethiopian curriculum and never gets out of scope of the selected grade level.' ,
     work: 'RAG · PostgreSQL · Web Development · AI service · UI/UX',
     status: 'Under Development',
     image: '/logo.png',
