@@ -53,7 +53,7 @@ const PROJECTS = [
   {
     number: '05',
     type: 'AI Tutor',
-    title: 'AI Tutor',
+    title: 'TimihirtET',
     description: 'a RAG-powered curriculum-grounded AI tutor for Ethiopian highschool studnets' ,
     work: 'RAG · PostgreSQL · Web Development · AI service · UI/UX',
     status: 'Under Development',
